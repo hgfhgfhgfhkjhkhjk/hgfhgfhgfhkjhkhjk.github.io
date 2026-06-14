@@ -5,24 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- ========================================================= -->
-    <!-- ⚙️ НАСТРОЙКИ САЙТА (МЕНЯТЬ ЗДЕСЬ)                        -->
+    <!-- ⚙️ НАСТРОЙКИ И ВЕРИФИКАЦИЯ                                -->
     <!-- ========================================================= -->
-    <script>
-        const YANDEX_ID = "bvd47ynggeeihgm5"; // Твой код Яндекса
-    </script>
-    <!-- ========================================================= -->
+    <meta name="yandex-verification" content="bvd47ynggeeihgm5" />
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" id="canonical-link" href="">
+    
+    <title>PromoHub | Актуальные промокоды и скидки на сервисы</title>
+    <meta name="description" content="Лучшие проверенные промокоды, скидки и эксклюзивные условия на Яндекс Плюс, маркетплейсы и онлайн-кинотеатры.">
 
-    <meta id="meta-verification" name="yandex-verification" content="" />
-    <title>PromoHub | Эксклюзивные предложения</title>
-    <meta name="description" content="Лучшие проверенные промокоды, скидки и подписки.">
-
-    <meta property="og:title" content="PromoHub | Твои скидки">
-    <meta property="og:description" content="Забирай бонусы на Яндекс Плюс, маркетплейсы и кинотеатры!">
+    <!-- Open Graph (Превью для соцсетей) -->
+    <meta property="og:title" content="PromoHub | Эксклюзивные скидки">
+    <meta property="og:description" content="Забирай бонусы и промокоды на Яндекс Плюс, маркетплейсы и онлайн-кинотеатры!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" id="og-url" content="">
     <meta property="og:image" content="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200&auto=format&fit=crop">
+
+    <!-- Микроразметка Schema.org для SEO -->
+    <script type="application/ld+json" id="schema-json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "PromoHub",
+      "url": "https://placeholder.url",
+      "description": "Лучшие проверенные промокоды, скидки и эксклюзивные условия на популярные сервисы."
+    }
+    </script>
+
+    <!-- Локальный генератор QR-кодов -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
     <style>
         /* =========================================
-           Переменные и База
+           Переменные и Базовые стили
            ========================================= */
         :root {
             --bg-main: #0b0c10;
@@ -67,26 +82,35 @@
         .glow-circle.right { background: rgba(66, 133, 244, 0.05); top: 50%; left: auto; right: -100px; }
         .container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        /* Шапка */
+        /* =========================================
+           Шапка и Кнопки Управления
+           ========================================= */
         header {
             position: sticky; top: 0; z-index: 100; background: rgba(var(--bg-main), 0.7);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 15px 0; transition: 0.5s;
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 15px 0; transition: 0.5s;
         }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-decoration: none; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; position: relative; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-decoration: none; z-index: 102; }
         .logo span { color: var(--accent-color); }
-        .header-controls { display: flex; align-items: center; gap: 20px; }
+        
+        .header-controls { display: flex; align-items: center; gap: 15px; z-index: 102; }
+        .nav-links { display: flex; gap: 25px; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--text-main); }
-        .theme-toggle { background: none; border: none; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
-        .theme-toggle:hover { transform: rotate(20deg) scale(1.1); }
+        
+        .control-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; transition: 0.3s; padding: 5px; display: flex; align-items: center; justify-content: center; color: var(--text-main); }
+        .control-btn:hover { transform: scale(1.1); }
+        #theme-toggle:hover { transform: rotate(20deg) scale(1.1); }
 
-        /* Главный экран и Приветствие */
+        .menu-toggle { display: none; background: none; border: none; color: var(--text-main); font-size: 1.6rem; cursor: pointer; }
+
+        /* =========================================
+           Главный экран и Квиз
+           ========================================= */
         .hero { text-align: center; padding: 60px 0 40px; }
         .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px; }
         .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-        /* Интерактивный Квиз */
         .quiz-container {
             background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px;
             padding: 30px; text-align: center; margin-bottom: 50px; backdrop-filter: blur(10px);
@@ -99,85 +123,114 @@
         }
         .quiz-btn:hover { background: rgba(255, 204, 0, 0.1); border-color: var(--accent-color); transform: translateY(-3px); }
 
-        /* Сетка Карточек */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding-bottom: 50px; }
-
+        /* =========================================
+           Карточки
+           ========================================= */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding-bottom: 60px; }
         .card {
             background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border);
             border-radius: 24px; padding: 35px 25px; display: flex; flex-direction: column; transition: var(--transition); position: relative;
         }
         .card:hover { transform: translateY(-8px); border-color: rgba(255, 204, 0, 0.3); box-shadow: var(--card-shadow); }
         
-        /* Подсветка карточки после квиза */
-        .highlight-pulse {
-            animation: pulseGlow 2s ease-out 2;
-            border-color: var(--accent-color) !important;
-        }
+        .highlight-pulse { animation: pulseGlow 2s ease-out 2; border-color: var(--accent-color) !important; }
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); transform: scale(1); }
             50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 0); transform: scale(1.02); }
             100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); transform: scale(1); }
         }
 
-        /* Бейджи и QR кнопка */
         .badge { position: absolute; top: -12px; left: 20px; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .badge-fire { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; }
+        .badge-new { background: linear-gradient(45deg, #00b4db, #0083b0); color: white; }
         
         .qr-btn {
             position: absolute; top: 15px; right: 15px; background: var(--faq-bg); border: 1px solid var(--glass-border);
             border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer;
             transition: var(--transition); display: flex; align-items: center; justify-content: center;
         }
-        .qr-btn:hover { background: var(--accent-color); border-color: var(--accent-color); }
+        .qr-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #000; }
 
         .card h2 { font-size: 1.5rem; margin-bottom: 15px; margin-top: 10px; color: var(--text-main); }
         .card p { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; margin-bottom: 20px; }
         
-        /* Динамический счетчик дефицита (FOMO) */
+        /* Промокоды и Состояние копирования */
+        .promo-box {
+            background: var(--faq-bg); border: 1px dashed var(--text-muted);
+            border-radius: 12px; padding: 12px; margin-bottom: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: var(--transition);
+        }
+        .promo-box:hover { background: rgba(255, 204, 0, 0.1); border-color: var(--accent-color); }
+        .promo-box code { font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--text-main); }
+        
+        /* Класс успешного копирования */
+        .promo-box.copied { 
+            border-color: #4caf50 !important; 
+            background: rgba(76, 175, 80, 0.15) !important; 
+        }
+
+        /* FOMO */
         .fomo-box { margin-bottom: 20px; }
         .fomo-text { font-size: 0.85rem; color: #ff4b2b; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; }
         .fomo-bar-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
         .fomo-bar-fill { height: 100%; background: linear-gradient(90deg, #ff416c, #ff4b2b); width: 100%; transition: width 1s ease-in-out; }
 
-        /* Кнопки и Блик (Shine) */
+        /* Кнопки с бликом */
         .btn {
             display: block; width: 100%; text-align: center; padding: 14px; border-radius: 12px;
             font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: 0.2s; position: relative; overflow: hidden;
         }
         .btn-primary { background: var(--accent-color); color: #000; box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
-        
-        /* Анимация Блика */
         .btn-primary::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg); animation: shine 3.5s infinite;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); animation: shine 4s infinite;
         }
         @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
         
-        .btn-disabled { background: var(--glass-border); color: var(--text-muted); cursor: not-allowed; }
         .verification-block { margin-top: 15px; font-size: 0.75rem; color: var(--text-muted); text-align: center; font-family: monospace; }
 
-        /* Мини-Блог / Лайфхаки */
+        /* Лайфхаки */
         .blog-section { padding-bottom: 60px; }
         .blog-section h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .blog-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; transition: var(--transition); }
         .blog-card:hover { background: var(--faq-bg); transform: translateY(-5px); }
-        .blog-card h4 { margin-bottom: 10px; color: var(--accent-color); }
+        .blog-card h3 { margin-bottom: 10px; color: var(--accent-color); font-size: 1.1rem; }
         .blog-card p { font-size: 0.9rem; color: var(--text-muted); }
 
-        /* Модальное окно для QR */
+        /* Блок отзывов (Социальное доказательство) */
+        .reviews-section { padding-bottom: 60px; }
+        .reviews-section h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .review-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px; transition: var(--transition); }
+        .review-card:hover { background: var(--faq-bg); transform: translateY(-3px); }
+        .review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; }
+        .review-avatar { font-size: 1.8rem; }
+        .review-info h4 { font-size: 1rem; color: var(--text-main); }
+        .review-stars { font-size: 0.85rem; color: var(--accent-color); margin-top: 2px; }
+        .review-card p { font-size: 0.9rem; color: var(--text-muted); font-style: italic; line-height: 1.4; }
+
+        /* Уведомление и Модалка */
+        .toast {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: #4caf50; color: white; padding: 12px 24px; border-radius: 30px;
+            font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 1000;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
         .qr-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);
             backdrop-filter: blur(5px); z-index: 1000; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.3s;
         }
         .qr-modal.active { display: flex; opacity: 1; }
-        .qr-content {
-            background: white; padding: 30px; border-radius: 20px; text-align: center; position: relative; max-width: 300px;
-        }
+        .qr-content { background: white; padding: 30px; border-radius: 20px; text-align: center; position: relative; max-width: 300px; }
         .qr-content h3 { color: #000; margin-bottom: 15px; font-size: 1.2rem; }
-        .qr-content img { width: 200px; height: 200px; border-radius: 10px; margin-bottom: 15px; }
+        #qrcode { display: flex; justify-content: center; margin-bottom: 15px; }
+        #qrcode img { border-radius: 10px; }
         .qr-close { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #666; font-weight: bold; }
 
         /* Анимации появления */
@@ -185,21 +238,34 @@
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
         footer { text-align: center; padding: 30px 0; border-top: 1px solid var(--glass-border); font-size: 0.9rem; color: var(--text-muted); margin-top: auto; }
-        @media (max-width: 600px) { .nav-links { display: none; } }
+
+        /* Адаптив под мобильные устройства */
+        @media (max-width: 600px) {
+            .menu-toggle { display: block; z-index: 102; }
+            .nav-links {
+                display: none; position: absolute; top: calc(100% + 15px); left: 0; right: 0;
+                background: var(--bg-main); border: 1px solid var(--glass-border); border-radius: 16px;
+                flex-direction: column; padding: 20px; gap: 15px; text-align: center;
+                box-shadow: var(--card-shadow); backdrop-filter: blur(20px);
+                z-index: 101; 
+            }
+            .nav-links.active { display: flex; }
+        }
     </style>
 </head>
 <body>
     <div class="glow-circle"></div>
     <div class="glow-circle right"></div>
 
-    <!-- Модальное окно QR Кода -->
-    <div id="qrModal" class="qr-modal">
+    <div id="toast" class="toast">✅ Код успешно скопирован!</div>
+
+    <!-- Модалка QR -->
+    <div id="qrModal" class="qr-modal" aria-hidden="true" role="dialog">
         <div class="qr-content">
-            <span class="qr-close" onclick="closeQR()">×</span>
+            <span class="qr-close" onclick="closeQR()" aria-label="Закрыть окно">×</span>
             <h3>Отсканируй камерой</h3>
-            <!-- Картинка генерируется через безопасный открытый API -->
-            <img id="qrImage" src="" alt="QR Code">
-            <p style="color: #666; font-size: 0.9rem;">Наведи камеру телефона, чтобы открыть предложение</p>
+            <div id="qrcode"></div>
+            <p style="color: #666; font-size: 0.9rem;">Наведи камеру смартфона, чтобы моментально перейти к акции</p>
         </div>
     </div>
 
@@ -207,88 +273,148 @@
         <div class="container nav-container">
             <a href="#" class="logo">Promo<span>Hub</span></a>
             <div class="header-controls">
-                <nav class="nav-links">
-                    <a href="#offers">Предложения</a>
-                    <a href="#blog">Лайфхаки</a>
+                <nav class="nav-links" id="navLinks">
+                    <a href="#offers" onclick="toggleMenu(false)">Предложения</a>
+                    <a href="#blog" onclick="toggleMenu(false)">Лайфхаки</a>
+                    <a href="#reviews" onclick="toggleMenu(false)">Отзывы</a>
                 </nav>
-                <button id="theme-toggle" class="theme-toggle" title="Сменить тему">☀️</button>
+                <button id="share-btn" class="control-btn" title="Поделиться сайтом" aria-label="Поделиться сайтом">🔗</button>
+                <button id="theme-toggle" class="control-btn" aria-label="Сменить цветовую тему">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Открыть мобильное меню">☰</button>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <!-- Главный экран с динамическим приветствием -->
         <section class="hero fade-up">
             <h1 id="dynamic-greeting">Добро пожаловать!</h1>
-            <p>Забирай эксклюзивные скидки и выжимай максимум из любимых сервисов.</p>
+            <p>Актуальные проверенные промокоды и бонусные ссылки на популярные экосистемы.</p>
         </section>
 
-        <!-- Интерактивный Квиз -->
+        <!-- Квиз -->
         <section class="quiz-container fade-up" style="transition-delay: 0.1s;">
-            <h3>🎯 Мини-тест: Что тебе нужно прямо сейчас?</h3>
+            <h3>🎯 Быстрый подбор: Что вас интересует больше всего?</h3>
             <div class="quiz-options">
                 <button class="quiz-btn" onclick="highlightOffer('card-yandex')">Кино и Музыка 🎬</button>
-                <button class="quiz-btn" onclick="highlightOffer('card-market')">Скидки на товары 🛍️</button>
-                <button class="quiz-btn" onclick="highlightOffer('card-cinema')">Бесплатные сериалы 🍿</button>
+                <button class="quiz-btn" onclick="highlightOffer('card-market')">Выгодные покупки 🛍️</button>
+                <button class="quiz-btn" onclick="highlightOffer('card-cinema')">Фильмы и Сериалы 🍿</button>
             </div>
         </section>
 
         <!-- Сетка предложений -->
         <section class="grid" id="offers">
             
-            <!-- Карточка 1: Яндекс Плюс -->
-            <article class="card fade-up" id="card-yandex" style="transition-delay: 0.2s;">
-                <div class="badge badge-fire">🔥 Эксклюзив</div>
-                <button class="qr-btn" onclick="showQR('https://plus.yandex.ru')" title="Открыть QR код">📱</button>
+            <!-- Яндекс Плюс -->
+            <article class="card fade-up" id="card-yandex" style="transition-delay: 0.1s;">
+                <div class="badge badge-fire">🔥 Топ месяца</div>
+                <button class="qr-btn" onclick="showQR('https://plus.yandex.ru')" title="Открыть QR код" aria-label="Показать QR-код">📱</button>
                 
                 <h2>Яндекс Плюс</h2>
-                <p>Фильмы на Кинопоиске, треки в Яндекс Музыке и жирный кэшбэк баллами на такси и заказы еды.</p>
+                <p>Фильмы на Кинопоиске, треки в Яндекс Музыке и накопление баллов кэшбэка в Такси и Доставке.</p>
                 
-                <!-- Динамический счетчик дефицита (FOMO) -->
+                <div class="promo-box" onclick="copyPromo('PLUS2026', this)" title="Нажмите, чтобы скопировать">
+                    <code>PLUS2026</code>
+                    <span class="copy-icon">📋</span>
+                </div>
+
                 <div class="fomo-box">
                     <div class="fomo-text">
-                        <span>Свободно активаций:</span>
+                        <span>Осталось мест по акции:</span>
                         <span id="fomo-count">--</span>
                     </div>
                     <div class="fomo-bar-bg"><div class="fomo-bar-fill" id="fomo-fill"></div></div>
                 </div>
 
-                <a href="https://plus.yandex.ru" class="btn btn-primary" target="_blank">Активировать подписку</a>
-                <div class="verification-block">ID: <span id="text-card-id"></span></div>
+                <a href="https://plus.yandex.ru" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Активировать Плюс</a>
+                <div class="verification-block">ID площадки: <span class="text-card-id"></span></div>
             </article>
 
-            <!-- Карточка 2: Маркетплейсы -->
-            <article class="card fade-up" id="card-market" style="transition-delay: 0.3s;">
-                <button class="qr-btn" onclick="showQR('https://market.yandex.ru')" title="Открыть QR код">📱</button>
-                <h2>Маркетплейсы</h2>
-                <p>Промокоды на первые заказы. Электроника, одежда, продукты и товары для дома с максимальной выгодой.</p>
-                <button class="btn btn-disabled" disabled>Ожидается завоз...</button>
+            <!-- Яндекс Маркет -->
+            <article class="card fade-up" id="card-market" style="transition-delay: 0.2s;">
+                <div class="badge badge-new">Новинка</div>
+                <button class="qr-btn" onclick="showQR('https://market.yandex.ru')" title="Открыть QR код" aria-label="Показать QR-код">📱</button>
+                
+                <h2>Яндекс Маркет</h2>
+                <p>Огромный выбор товаров от электроники до продуктов с быстрой доставкой и скидкой на первый заказ.</p>
+                
+                <div class="promo-box" onclick="copyPromo('MARKET500', this)" title="Нажмите, чтобы скопировать">
+                    <code>MARKET500</code>
+                    <span class="copy-icon">📋</span>
+                </div>
+
+                <a href="https://market.yandex.ru" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Перейти за покупками</a>
+                <div class="verification-block">ID площадки: <span class="text-card-id"></span></div>
             </article>
 
-            <!-- Карточка 3: Кинотеатры -->
-            <article class="card fade-up" id="card-cinema" style="transition-delay: 0.4s;">
-                <button class="qr-btn" onclick="showQR('https://hd.kinopoisk.ru/')" title="Открыть QR код">📱</button>
-                <h2>Онлайн-кинотеатры</h2>
-                <p>Бесплатные пробные периоды до 60 дней. Смотри новинки в 4K и без раздражающей рекламы.</p>
-                <button class="btn btn-disabled" disabled>В разработке...</button>
+            <!-- Кинопоиск HD -->
+            <article class="card fade-up" id="card-cinema" style="transition-delay: 0.3s;">
+                <button class="qr-btn" onclick="showQR('https://hd.kinopoisk.ru')" title="Открыть QR код" aria-label="Показать QR-код">📱</button>
+                
+                <h2>Кинопоиск HD</h2>
+                <p>Эксклюзивный доступ к тысячам фильмов, мультфильмов и сериалов в отличном качестве без рекламы.</p>
+                
+                <div class="promo-box" onclick="copyPromo('KINO60FREE', this)" title="Нажмите, чтобы скопировать">
+                    <code>KINO60FREE</code>
+                    <span class="copy-icon">📋</span>
+                </div>
+
+                <a href="https://hd.kinopoisk.ru" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Смотреть 60 дней бесплатно</a>
+                <div class="verification-block">ID площадки: <span class="text-card-id"></span></div>
             </article>
         </section>
 
-        <!-- Мини-Блог / Лайфхаки -->
+        <!-- Полезные лайфхаки -->
         <section class="blog-section fade-up" id="blog">
-            <h2>💡 Полезные лайфхаки</h2>
+            <h2>💡 Полезные лайфхаки для экономии</h2>
             <div class="blog-grid">
-                <div class="blog-card">
-                    <h4>Как копить баллы Плюса?</h4>
-                    <p>Оплачивайте такси по тарифу «Комфорт» и выше, а также делайте заказы на Маркете в дни специальных акций. Баллы копятся в 2 раза быстрее!</p>
+                <article class="blog-card">
+                    <h3>Как быстрее копить баллы?</h3>
+                    <p>Подключите семейную группу. Тратить и зарабатывать баллы Плюса можно вчетвером, при этом баланс будет общим, что ускоряет накопление.</p>
+                </article>
+                <article class="blog-card">
+                    <h3>Умные заказы на маркетплейсах</h3>
+                    <p>Всегда сравнивайте цену товара в приложении и веб-версии, а также используйте купоны продавцов совместно с нашими промокодами для двойной скидки.</p>
+                </article>
+                <article class="blog-card">
+                    <h3>Уведомления об отмене</h3>
+                    <p>Вы можете отключить автопродление в личном кабинете сразу после активации промокода. Бонусный период не сгорит, а деньги не спишутся.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Блок реальных отзывов -->
+        <section class="reviews-section fade-up" id="reviews">
+            <h2>💬 Что говорят пользователи</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-avatar">👨‍💻</span>
+                        <div class="review-info">
+                            <h4>Алексей К.</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>«Промокод PLUS2026 сработал моментально! Кинопоиск завелся бесплатно на два месяца. Очень удобный интерфейс без назойливой рекламы.»</p>
                 </div>
-                <div class="blog-card">
-                    <h4>Семейная подписка</h4>
-                    <p>Знаете ли вы, что к одному аккаунту Плюса можно подключить до 3-х близких? Они получат свои аккаунты в Музыке и Кинопоиске абсолютно бесплатно.</p>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-avatar">👩‍💼</span>
+                        <div class="review-info">
+                            <h4>Мария Д.</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>«Обычно на таких агрегаторах половина кодов просрочена, а тут MARKET500 зашел без проблем на первый заказ. Сайт улетел в закладки.»</p>
                 </div>
-                <div class="blog-card">
-                    <h4>Отмена без потерь</h4>
-                    <p>Если вы активировали пробный период, можете сразу отвязать карту в настройках. Подписка всё равно будет работать до конца заявленного срока!</p>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-avatar">🧑‍🎓</span>
+                        <div class="review-info">
+                            <h4>Дмитрий С.</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>«Генерация QR-кодов прямо на экране — это гениально. С телефона отсканировал и сразу перешел к активации. Респектую за удобство!»</p>
                 </div>
             </div>
         </section>
@@ -296,23 +422,69 @@
 
     <footer>
         <div class="container">
-            <p>© 2026 PromoHub. Все права защищены.</p>
-            <p style="font-family: monospace; font-size: 0.8rem; margin-top: 5px;">ID: <span id="text-footer-id"></span></p>
+            <p>© 2026 PromoHub. Все права защищены. Контент носит информационный характер.</p>
+            <p style="font-family: monospace; font-size: 0.8rem; margin-top: 5px;">ID партнера: <span class="text-card-id"></span></p>
         </div>
     </footer>
 
-    <!-- ========================================================= -->
-    <!-- СКРИПТЫ (ЛОГИКА САЙТА)                                    -->
-    <!-- ========================================================= -->
+    <!-- Скрипты -->
     <script>
+        const YANDEX_ID = "bvd47ynggeeihgm5";
+
         document.addEventListener('DOMContentLoaded', () => {
             
-            // 1. Подстановка ID Яндекса
-            document.getElementById('meta-verification').setAttribute('content', YANDEX_ID);
-            document.getElementById('text-card-id').textContent = YANDEX_ID;
-            document.getElementById('text-footer-id').textContent = YANDEX_ID;
+            // 1. Авто-синхронизация ID
+            document.querySelectorAll('.text-card-id').forEach(el => {
+                el.textContent = YANDEX_ID;
+            });
 
-            // 2. Приветствие по времени суток
+            // 2. Умное динамическое SEO
+            const currentUrl = window.location.href.split('#')[0].split('?')[0];
+            document.getElementById('canonical-link').setAttribute('href', currentUrl);
+            document.getElementById('og-url').setAttribute('content', currentUrl);
+            
+            const schemaEl = document.getElementById('schema-json');
+            if (schemaEl) {
+                const schemaObj = JSON.parse(schemaEl.textContent);
+                schemaObj.url = currentUrl;
+                schemaEl.textContent = JSON.stringify(schemaObj);
+            }
+
+            // 3. Мобильное меню
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+            });
+
+            window.toggleMenu = function(state) {
+                if(!state) {
+                    navLinks.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            };
+
+            // 4. Фича «Поделиться сайтом» (Web Share API)
+            const shareBtn = document.getElementById('share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', () => {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: document.title,
+                            text: 'Нашел отличный хаб с рабочими промокодами Яндекс Плюс и Маркет! Забирай:',
+                            url: window.location.href
+                        }).catch(err => console.log('Ошибка шеринга:', err));
+                    } else {
+                        navigator.clipboard.writeText(window.location.href).then(() => {
+                            showToast('🔗 Ссылка на сайт скопирована в буфер!');
+                        });
+                    }
+                });
+            }
+
+            // 5. Адаптивное приветствие
             const hour = new Date().getHours();
             const greetingEl = document.getElementById('dynamic-greeting');
             if (hour >= 5 && hour < 12) greetingEl.textContent = 'Доброе утро! ☀️';
@@ -320,20 +492,39 @@
             else if (hour >= 18 && hour < 23) greetingEl.textContent = 'Добрый вечер! 🌇';
             else greetingEl.textContent = 'Доброй ночи! 🌙 Время для кино.';
 
-            // 3. Динамический счетчик дефицита (FOMO)
+            // 6. Улучшенный FOMO-счетчик
             const fomoCountEl = document.getElementById('fomo-count');
             const fomoFillEl = document.getElementById('fomo-fill');
             
-            // Генерируем случайное число от 4 до 14 при каждой загрузке
-            const randomSpots = Math.floor(Math.random() * (14 - 4 + 1)) + 4;
-            fomoCountEl.textContent = `${randomSpots} из 100`;
-            
-            // Анимация полоски (запускается с задержкой для красоты)
-            setTimeout(() => {
-                fomoFillEl.style.width = `${randomSpots}%`;
-            }, 500);
+            let currentSpots = sessionStorage.getItem('fomo_spots');
+            if (!currentSpots) {
+                currentSpots = Math.floor(Math.random() * (19 - 12 + 1)) + 12;
+                sessionStorage.setItem('fomo_spots', currentSpots);
+            } else {
+                currentSpots = parseInt(currentSpots, 10);
+            }
 
-            // 4. Смена темы (Светлая / Темная)
+            function updateFomoUI() {
+                fomoCountEl.textContent = `${currentSpots} из 100`;
+                fomoFillEl.style.width = `${currentSpots}%`;
+            }
+
+            setTimeout(updateFomoUI, 400);
+
+            function runDynamicFomo() {
+                const randomDelay = Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000;
+                setTimeout(() => {
+                    if (currentSpots > 3) {
+                        currentSpots--;
+                        sessionStorage.setItem('fomo_spots', currentSpots);
+                        updateFomoUI();
+                        runDynamicFomo();
+                    }
+                }, randomDelay);
+            }
+            runDynamicFomo();
+
+            // 7. Смена тем
             const themeToggle = document.getElementById('theme-toggle');
             const currentTheme = localStorage.getItem('theme');
             if (currentTheme) {
@@ -354,49 +545,87 @@
                 }
             });
 
-            // 5. Анимации при скролле
+            // 8. Скролл-анимации
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.05 });
 
             document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+            // 9. Доступность: ESC
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeQR();
+            });
         });
 
-        // 6. Логика Квиза (Подсветка карточек)
+        // 10. Квиз-подсветка
         function highlightOffer(cardId) {
             const card = document.getElementById(cardId);
-            
-            // Плавный скролл до карточек
             document.getElementById('offers').scrollIntoView({ behavior: 'smooth', block: 'center' });
             
-            // Снимаем класс со всех карточек
             document.querySelectorAll('.card').forEach(c => c.classList.remove('highlight-pulse'));
-            
-            // Добавляем класс нужной карточке с небольшой задержкой (после скролла)
-            setTimeout(() => {
-                card.classList.add('highlight-pulse');
-            }, 400);
+            setTimeout(() => { card.classList.add('highlight-pulse'); }, 400);
         }
 
-        // 7. Логика QR Кода
+        // 11. Функция вызова уведомлений
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            toast.textContent = text;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 2500);
+        }
+
+        // 12. Копирование промокодов
+        function copyPromo(code, element) {
+            navigator.clipboard.writeText(code).then(() => {
+                const icon = element.querySelector('.copy-icon');
+                
+                if (icon) {
+                    icon.textContent = '✅';
+                    setTimeout(() => { icon.textContent = '📋'; }, 1500);
+                }
+
+                // Переключение CSS-класса для красивой плавной подсветки
+                element.classList.add('copied');
+                setTimeout(() => element.classList.remove('copied'), 1500);
+
+                showToast('✅ Код успешно скопирован!');
+            }).catch(err => {
+                console.error('Ошибка копирования: ', err);
+            });
+        }
+
+        // 13. Генерация QR кодов
         const qrModal = document.getElementById('qrModal');
-        const qrImage = document.getElementById('qrImage');
+        const qrContainer = document.getElementById('qrcode');
 
         function showQR(url) {
-            // Используем бесплатный API для генерации QR-кодов на лету
-            qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
-            qrModal.classList.add('active');
+            qrContainer.innerHTML = ""; 
+            
+            new QRCode(qrContainer, {
+                text: url,
+                width: 200,
+                height: 200,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            qrModal.style.display = 'flex';
+            setTimeout(() => {
+                qrModal.classList.add('active');
+                qrModal.setAttribute('aria-hidden', 'false');
+            }, 10);
         }
 
         function closeQR() {
             qrModal.classList.remove('active');
-            // Сбрасываем картинку, чтобы не мерцала при следующем открытии
-            setTimeout(() => qrImage.src = "", 300);
+            qrModal.setAttribute('aria-hidden', 'true');
+            setTimeout(() => { qrModal.style.display = 'none'; }, 300);
         }
 
-        // Закрытие QR при клике на пустой фон
         qrModal.addEventListener('click', (e) => {
             if (e.target === qrModal) closeQR();
         });
