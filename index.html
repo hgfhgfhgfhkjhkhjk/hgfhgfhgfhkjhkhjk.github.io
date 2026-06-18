@@ -6,13 +6,12 @@
     <meta name="yandex-verification" content="bvd47ynggeeihgm5" />
     <meta name="robots" content="index, follow">
     <link rel="canonical" id="canonical-link" href="">
-    
-    <title>PromoHub — Активируй Яндекс Плюс выгодно</title>
-    <meta name="description" content="Подключи Яндекс Плюс по специальной партнёрской ссылке. Фильмы, музыка, кэшбэк и скидки. Экономь с первого дня.">
-    
-    <meta property="og:title" content="PromoHub — Яндекс Плюс с выгодой">
-    <meta property="og:description" content="Подключи подписку Плюс и получи максимум преимуществ">
-    <meta property="og:type" content="website">
+
+    <title>PromoHub — Яндекс Плюс 45 дней бесплатно</title>
+    <meta name="description" content="Активируй Яндекс Плюс по промокоду N3GEL3U5FD — 45 дней бесплатно.">
+
+    <meta property="og:title" content="Яндекс Плюс — 45 дней в подарок">
+    <meta property="og:description" content="Подключи по промокоду N3GEL3U5FD">
     <meta property="og:url" id="og-url" content="">
     <meta property="og:image" content="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200&auto=format&fit=crop">
 
@@ -21,155 +20,170 @@
     <style>
         :root {
             --bg-main: #0b0c10;
-            --bg-gradient: radial-gradient(circle at top, #1f2833 0%, #0b0c10 70%);
-            --text-main: #f8f9fa;
-            --text-muted: #a0aab2;
-            --accent-color: #ffcc00;
-            --accent-hover: #e6b800;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent: #ffcc00;
+            --text: #f8f9fa;
+            --muted: #a0aab2;
+            --glass: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.15);
         }
 
-        [data-theme="light"] {
-            --bg-main: #f4f7f6;
-            --bg-gradient: radial-gradient(circle at top, #ffffff 0%, #eef2f3 70%);
-            --text-main: #2c3e50;
-            --text-muted: #5c6a79;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.1);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg-main); background-image: var(--bg-gradient);
-            color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column;
-            overflow-x: hidden;
+            background: var(--bg-main);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
         header {
-            position: sticky; top: 0; z-index: 100; background: rgba(11,12,16,0.8);
-            backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 15px 0;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(11,12,16,0.95);
+            backdrop-filter: blur(12px);
+            z-index: 100;
         }
 
-        .hero { text-align: center; padding: 60px 0 40px; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; margin-bottom: 16px; line-height: 1.1; }
-        .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 30px; }
+        .hero { text-align: center; padding: 60px 0 50px; }
+        .hero h1 { font-size: clamp(2.4rem, 7vw, 3.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+        .hero p { font-size: 1.25rem; color: var(--muted); max-width: 680px; margin: 0 auto 40px; }
 
         .card {
-            background: var(--glass-bg); border: 1px solid var(--glass-border);
-            border-radius: 24px; padding: 40px 30px; text-align: center;
-            transition: all 0.3s ease; max-width: 480px; margin: 0 auto;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 45px 30px;
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: center;
         }
-        .card:hover { transform: translateY(-8px); border-color: var(--accent-color); }
+
+        .promo-box {
+            background: rgba(255, 204, 0, 0.12);
+            border: 2px dashed var(--accent);
+            border-radius: 16px;
+            padding: 20px 24px;
+            font-size: 1.5rem;
+            font-family: monospace;
+            font-weight: bold;
+            margin: 25px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .promo-box:hover { background: rgba(255, 204, 0, 0.25); }
 
         .btn {
-            display: block; width: 100%; padding: 16px; margin: 15px 0;
-            background: var(--accent-color); color: #000; font-weight: 700;
-            font-size: 1.1rem; border-radius: 16px; text-decoration: none;
-            transition: all 0.2s; cursor: pointer; border: none;
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 12px 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 16px;
+            text-decoration: none;
+            transition: all 0.25s;
         }
-        .btn:hover { background: var(--accent-hover); transform: scale(1.03); }
+        .btn-primary {
+            background: linear-gradient(90deg, #ffcc00, #ffe033);
+            color: #000;
+        }
+        .btn-primary:hover { transform: scale(1.04); }
 
         .btn-outline {
-            background: transparent; border: 2px solid var(--accent-color); color: var(--text-main);
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--text);
         }
 
         .disclaimer {
-            font-size: 0.8rem; color: var(--text-muted); text-align: center;
-            margin-top: 40px; padding: 20px; border-top: 1px solid var(--glass-border);
+            font-size: 0.85rem;
+            color: var(--muted);
+            text-align: center;
+            margin: 50px 0 30px;
+            line-height: 1.6;
         }
 
-        footer { text-align: center; padding: 30px 0; color: var(--text-muted); font-size: 0.9rem; margin-top: auto; }
-
-        @media (max-width: 768px) {
-            .hero { padding: 40px 0 30px; }
-        }
+        footer { text-align: center; padding: 30px 0; color: var(--muted); font-size: 0.9rem; margin-top: auto; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="#" class="logo" style="font-size: 1.6rem; font-weight: 800; color: var(--text-main); text-decoration: none;">
-                Promo<span style="color: var(--accent-color);">Hub</span>
-            </a>
+        <div class="container">
+            <h2 style="font-size: 1.7rem; font-weight: 800;">Promo<span style="color: var(--accent);">Hub</span></h2>
         </div>
     </header>
 
     <main class="container">
         <section class="hero">
-            <h1>Яндекс Плюс —<br>фильмы, музыка и кэшбэк</h1>
-            <p>Подключи подписку по моей партнёрской ссылке и получи все преимущества сервиса</p>
+            <h1>Яндекс Плюс<br>45 дней бесплатно</h1>
+            <p>Активируй подписку по промокоду и получи Кинопоиск HD, Музыку, Книги + возможность поделиться с 3 близкими</p>
 
             <div class="card">
-                <h2 style="margin-bottom: 20px; font-size: 1.8rem;">Что входит в Плюс</h2>
-                <ul style="text-align: left; font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px; color: var(--text-muted);">
-                    <li>✅ Кинопоиск HD (тысячи фильмов и сериалов)</li>
-                    <li>✅ Яндекс Музыка без рекламы</li>
-                    <li>✅ Кэшбэк баллами в Такси, Еде, Маркете</li>
-                    <li>✅ Яндекс Книги и другие бонусы</li>
-                    <li>✅ Можно подключить до 4 человек в семью</li>
-                </ul>
+                <h2>Твой промокод</h2>
+                <div class="promo-box" onclick="copyPromo()">
+                    N3GEL3U5FD 📋
+                </div>
 
-                <!-- === СЮДА ВСТАВЬ СВОЮ ПАРТНЁРСКУЮ ССЫЛКУ === -->
-                <a href="https://plus.yandex.ru/?partner_id=ТВОЙ_ID" 
-                   class="btn" target="_blank" rel="noopener noreferrer">
-                    🚀 Подключить Яндекс Плюс
+                <a href="https://plus.yandex.ru/action/gift/45_perf?utm_source=DI&utm_medium=paid_performance&utm_content=goal-PL&utm_campaign=MSCAMP-1259&promocode=N3GEL3U5FD" 
+                   class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    🚀 Активировать 45 дней бесплатно
                 </a>
-                
-                <a href="https://plus.yandex.ru/?partner_id=ТВОЙ_ID" 
+
+                <a href="https://plus.yandex.ru/action/gift/45_perf?utm_source=DI&utm_medium=paid_performance&utm_content=goal-PL&utm_campaign=MSCAMP-1259&promocode=N3GEL3U5FD" 
                    class="btn btn-outline" target="_blank" rel="noopener noreferrer">
-                    Перейти на официальный сайт
+                    Перейти на plus.yandex.ru
                 </a>
 
-                <button onclick="showQR()" style="margin-top: 15px; background: none; border: none; color: var(--accent-color); cursor: pointer; font-size: 1rem;">
+                <button onclick="showQR()" style="margin-top: 25px; background: none; border: none; color: var(--accent); font-size: 1.05rem; cursor: pointer;">
                     📱 Показать QR-код
                 </button>
             </div>
         </section>
 
-        <div class="disclaimer">
-            <p>Мы являемся партнёром Яндекс Плюс. При оформлении подписки по ссылке выше мы можем получать вознаграждение. 
-            Это не влияет на цену для вас. Все сервисы работают напрямую через Яндекс.</p>
+        <div class="disclaimer container">
+            <p>Мы — партнёр Яндекс Дистрибуции. При активации по нашей ссылке или промокоду мы получаем вознаграждение. 
+            Для вас цена подписки не меняется. Промокод многоразовый.</p>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>© 2026 PromoHub • Информационный ресурс</p>
-            <p style="margin-top: 8px; font-size: 0.8rem;">
-                <a href="#" style="color: var(--text-muted);">Политика конфиденциальности</a>
-            </p>
+            © 2026 PromoHub • Партнёрский ресурс
         </div>
     </footer>
 
     <!-- QR Modal -->
-    <div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 9999; justify-content: center; align-items: center;">
-        <div style="background: var(--bg-main); padding: 30px; border-radius: 20px; text-align: center; max-width: 320px; border: 1px solid var(--accent-color);">
-            <h3 style="margin-bottom: 20px;">Отсканируй и подключи Плюс</h3>
-            <div id="qrcode" style="margin: 0 auto 20px;"></div>
-            <button onclick="closeQR()" style="padding: 10px 24px; background: var(--accent-color); color: #000; border: none; border-radius: 12px; font-weight: 600;">Закрыть</button>
+    <div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center;">
+        <div style="background: #111; padding: 35px; border-radius: 24px; text-align: center; max-width: 340px; border: 1px solid var(--accent);">
+            <h3 style="margin-bottom: 20px;">Отсканируй и активируй</h3>
+            <div id="qrcode" style="margin: 0 auto 25px;"></div>
+            <button onclick="closeQR()" style="padding: 12px 32px; background: var(--accent); color: #000; border: none; border-radius: 14px; font-weight: 700;">Закрыть</button>
         </div>
     </div>
 
     <script>
-        const PARTNER_LINK = "https://plus.yandex.ru/?partner_id=ТВОЙ_ID"; // ← Замени на свою ссылку!
+        const promoCode = "N3GEL3U5FD";
+        const partnerLink = "https://plus.yandex.ru/action/gift/45_perf?utm_source=DI&utm_medium=paid_performance&utm_content=goal-PL&utm_campaign=MSCAMP-1259&promocode=N3GEL3U5FD";
 
-        // Динамическое SEO
-        const currentUrl = window.location.href.split('#')[0].split('?')[0];
-        document.getElementById('canonical-link').setAttribute('href', currentUrl);
-        document.getElementById('og-url').setAttribute('content', currentUrl);
+        function copyPromo() {
+            navigator.clipboard.writeText(promoCode).then(() => {
+                alert("✅ Промокод скопирован!\n\n" + promoCode);
+            });
+        }
 
         function showQR() {
             document.getElementById('qrModal').style.display = 'flex';
             document.getElementById('qrcode').innerHTML = '';
             new QRCode(document.getElementById('qrcode'), {
-                text: PARTNER_LINK,
-                width: 220,
-                height: 220,
+                text: partnerLink,
+                width: 240,
+                height: 240,
                 colorDark: "#000000",
                 colorLight: "#ffffff"
             });
@@ -179,10 +193,9 @@
             document.getElementById('qrModal').style.display = 'none';
         }
 
-        // Закрытие по клику вне модалки
-        document.getElementById('qrModal').addEventListener('click', function(e) {
-            if (e.target === this) closeQR();
-        });
+        // SEO
+        document.getElementById('canonical-link').href = window.location.href.split('?')[0];
+        document.getElementById('og-url').content = window.location.href.split('?')[0];
     </script>
 </body>
 </html>
