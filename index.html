@@ -1,43 +1,39 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ========================================================= -->
-    <!-- ⚙️ НАСТРОЙКИ И ВЕРИФИКАЦИЯ                                -->
-    <!-- ========================================================= -->
     <meta name="yandex-verification" content="bvd47ynggeeihgm5" />
     <meta name="robots" content="index, follow">
     <link rel="canonical" id="canonical-link" href="">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preload" href="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200&auto=format&fit=crop" as="image">
     
     <title>PromoHub | Актуальные промокоды и скидки на сервисы</title>
     <meta name="description" content="Лучшие проверенные промокоды, скидки и эксклюзивные условия на Яндекс Плюс, маркетплейсы и онлайн-кинотеатры.">
 
-    <!-- Open Graph (Превью для соцсетей) -->
     <meta property="og:title" content="PromoHub | Эксклюзивные скидки">
     <meta property="og:description" content="Забирай бонусы и промокоды на Яндекс Плюс, маркетплейсы и онлайн-кинотеатры!">
     <meta property="og:type" content="website">
     <meta property="og:url" id="og-url" content="">
     <meta property="og:image" content="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200&auto=format&fit=crop">
 
-    <!-- Микроразметка Schema.org для SEO -->
     <script type="application/ld+json" id="schema-json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "PromoHub",
       "url": "https://placeholder.url",
-      "description": "Лучшие проверенные промокоды, скидки и эксклюзивные условия на популярные сервисы."
+      "description": "Лучшие проверенные промокоды и скидки на сервисы."
     }
     </script>
 
-    <!-- Локальный генератор QR-кодов -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
     <style>
         /* =========================================
-           Переменные и Базовые стили
+           ПЕРЕМЕННЫЕ И БАЗА
            ========================================= */
         :root {
             --bg-main: #0b0c10;
@@ -73,17 +69,13 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: var(--bg-main); background-image: var(--bg-gradient); color: var(--text-main);
             min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; transition: 0.5s ease;
+            padding-bottom: 70px; /* Отступ для sticky-кнопки */
         }
 
-        .glow-circle {
-            position: absolute; width: 400px; height: 400px; background: rgba(255, 204, 0, 0.05);
-            filter: blur(100px); border-radius: 50%; top: -100px; left: -100px; z-index: -1; pointer-events: none;
-        }
-        .glow-circle.right { background: rgba(66, 133, 244, 0.05); top: 50%; left: auto; right: -100px; }
         .container { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
         /* =========================================
-           Шапка и Кнопки Управления
+           ШАПКА
            ========================================= */
         header {
             position: sticky; top: 0; z-index: 100; background: rgba(var(--bg-main), 0.7);
@@ -100,75 +92,55 @@
         
         .control-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; transition: 0.3s; padding: 5px; display: flex; align-items: center; justify-content: center; color: var(--text-main); }
         .control-btn:hover { transform: scale(1.1); }
-        #theme-toggle:hover { transform: rotate(20deg) scale(1.1); }
 
         .menu-toggle { display: none; background: none; border: none; color: var(--text-main); font-size: 1.6rem; cursor: pointer; }
 
         /* =========================================
-           Главный экран и Квиз
+           HERO & СТАТИСТИКА
            ========================================= */
-        .hero { text-align: center; padding: 60px 0 40px; }
-        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px; }
+        .hero { text-align: center; padding: 50px 0 20px; }
+        .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 15px; background: linear-gradient(90deg, #fff, var(--accent-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
 
-        .quiz-container {
-            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px;
-            padding: 30px; text-align: center; margin-bottom: 50px; backdrop-filter: blur(10px);
-        }
+        .logos-wrap { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 30px 0; opacity: 0.6; filter: grayscale(100%); transition: var(--transition); }
+        .logos-wrap:hover { opacity: 1; filter: grayscale(0%); }
+        
+        .stats-block { text-align: center; margin-bottom: 30px; }
+        .stats-block p { color: var(--accent-color); font-weight: 600; font-size: 1.1rem; margin-bottom: 5px; }
+        .live-counter { background: var(--faq-bg); padding: 10px 20px; border-radius: 50px; display: inline-block; font-size: 0.95rem; font-weight: 600; color: #ff4b2b; border: 1px solid var(--glass-border); }
+
+        /* Квиз */
+        .quiz-container { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; text-align: center; margin-bottom: 40px; backdrop-filter: blur(10px); }
         .quiz-container h3 { margin-bottom: 20px; font-size: 1.3rem; }
         .quiz-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
-        .quiz-btn {
-            background: var(--faq-bg); border: 1px solid var(--glass-border); color: var(--text-main);
-            padding: 12px 24px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: var(--transition);
-        }
+        .quiz-btn { background: var(--faq-bg); border: 1px solid var(--glass-border); color: var(--text-main); padding: 12px 24px; border-radius: 50px; cursor: pointer; font-weight: 600; transition: var(--transition); }
         .quiz-btn:hover { background: rgba(255, 204, 0, 0.1); border-color: var(--accent-color); transform: translateY(-3px); }
 
         /* =========================================
-           Карточки
+           КАРТОЧКИ ПРЕДЛОЖЕНИЙ
            ========================================= */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding-bottom: 60px; }
-        .card {
-            background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border);
-            border-radius: 24px; padding: 35px 25px; display: flex; flex-direction: column; transition: var(--transition); position: relative;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding-bottom: 40px; }
+        .card { background: var(--glass-bg); backdrop-filter: blur(16px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 35px 25px; display: flex; flex-direction: column; transition: var(--transition); position: relative; }
         .card:hover { transform: translateY(-8px); border-color: rgba(255, 204, 0, 0.3); box-shadow: var(--card-shadow); }
         
         .highlight-pulse { animation: pulseGlow 2s ease-out 2; border-color: var(--accent-color) !important; }
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); transform: scale(1); }
-            50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 0); transform: scale(1.02); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); transform: scale(1); }
-        }
+        @keyframes pulseGlow { 0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); } 50% { box-shadow: 0 0 30px 10px rgba(255, 204, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); } }
 
         .badge { position: absolute; top: -12px; left: 20px; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .badge-fire { background: linear-gradient(45deg, #ff416c, #ff4b2b); color: white; }
         .badge-new { background: linear-gradient(45deg, #00b4db, #0083b0); color: white; }
         
-        .qr-btn {
-            position: absolute; top: 15px; right: 15px; background: var(--faq-bg); border: 1px solid var(--glass-border);
-            border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer;
-            transition: var(--transition); display: flex; align-items: center; justify-content: center;
-        }
+        .qr-btn { position: absolute; top: 15px; right: 15px; background: var(--faq-bg); border: 1px solid var(--glass-border); border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
         .qr-btn:hover { background: var(--accent-color); border-color: var(--accent-color); color: #000; }
 
         .card h2 { font-size: 1.5rem; margin-bottom: 15px; margin-top: 10px; color: var(--text-main); }
         .card p { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; margin-bottom: 20px; }
         
-        /* Промокоды и Состояние копирования */
-        .promo-box {
-            background: var(--faq-bg); border: 1px dashed var(--text-muted);
-            border-radius: 12px; padding: 12px; margin-bottom: 15px;
-            display: flex; justify-content: space-between; align-items: center;
-            cursor: pointer; transition: var(--transition);
-        }
+        /* Промокоды */
+        .promo-box { background: var(--faq-bg); border: 1px dashed var(--text-muted); border-radius: 12px; padding: 12px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: var(--transition); }
         .promo-box:hover { background: rgba(255, 204, 0, 0.1); border-color: var(--accent-color); }
         .promo-box code { font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--text-main); }
-        
-        /* Класс успешного копирования */
-        .promo-box.copied { 
-            border-color: #4caf50 !important; 
-            background: rgba(76, 175, 80, 0.15) !important; 
-        }
+        .promo-box.copied { border-color: #4caf50 !important; background: rgba(76, 175, 80, 0.15) !important; }
 
         /* FOMO */
         .fomo-box { margin-bottom: 20px; }
@@ -176,98 +148,91 @@
         .fomo-bar-bg { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
         .fomo-bar-fill { height: 100%; background: linear-gradient(90deg, #ff416c, #ff4b2b); width: 100%; transition: width 1s ease-in-out; }
 
-        /* Кнопки с бликом */
-        .btn {
-            display: block; width: 100%; text-align: center; padding: 14px; border-radius: 12px;
-            font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: 0.2s; position: relative; overflow: hidden;
-        }
+        /* Кнопки */
+        .btn { display: block; width: 100%; text-align: center; padding: 14px; border-radius: 12px; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: 0.2s; position: relative; overflow: hidden; }
         .btn-primary { background: var(--accent-color); color: #000; box-shadow: 0 4px 15px rgba(255, 204, 0, 0.2); }
         .btn-primary:hover { background: var(--accent-hover); transform: scale(1.02); }
-        .btn-primary::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg); animation: shine 4s infinite;
-        }
-        @keyframes shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
+        .btn-outline { background: transparent; border: 1px solid var(--accent-color); color: var(--text-main); margin-top: 10px; }
+        .btn-outline:hover { background: rgba(255, 204, 0, 0.1); }
         
         .verification-block { margin-top: 15px; font-size: 0.75rem; color: var(--text-muted); text-align: center; font-family: monospace; }
 
-        /* Лайфхаки */
-        .blog-section { padding-bottom: 60px; }
-        .blog-section h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .blog-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; transition: var(--transition); }
-        .blog-card:hover { background: var(--faq-bg); transform: translateY(-5px); }
-        .blog-card h3 { margin-bottom: 10px; color: var(--accent-color); font-size: 1.1rem; }
-        .blog-card p { font-size: 0.9rem; color: var(--text-muted); }
-
-        /* Блок отзывов (Социальное доказательство) */
-        .reviews-section { padding-bottom: 60px; }
-        .reviews-section h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        /* =========================================
+           ОТЗЫВЫ & FAQ
+           ========================================= */
+        .reviews-section, .faq-section { padding-bottom: 60px; }
+        .reviews-section h2, .faq-section h2 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .review-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px; transition: var(--transition); }
         .review-card:hover { background: var(--faq-bg); transform: translateY(-3px); }
         .review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; }
-        .review-avatar { font-size: 1.8rem; }
-        .review-info h4 { font-size: 1rem; color: var(--text-main); }
-        .review-stars { font-size: 0.85rem; color: var(--accent-color); margin-top: 2px; }
+        .review-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); }
+        .review-info h4 { font-size: 1rem; color: var(--text-main); margin-bottom: 3px; }
+        .review-stars { font-size: 0.85rem; color: var(--accent-color); }
         .review-card p { font-size: 0.9rem; color: var(--text-muted); font-style: italic; line-height: 1.4; }
 
-        /* Уведомление и Модалка */
-        .toast {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
-            background: #4caf50; color: white; padding: 12px 24px; border-radius: 30px;
-            font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 1000;
-        }
+        /* FAQ Аккордеон */
+        .faq-item { background: var(--glass-bg); border: 1px solid var(--glass-border); margin-bottom: 12px; padding: 18px; border-radius: 12px; cursor: pointer; transition: var(--transition); }
+        .faq-item:hover { background: var(--faq-bg); }
+        .faq-question { font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { display: none; margin-top: 12px; color: var(--text-muted); line-height: 1.5; font-size: 0.95rem; }
+
+        /* =========================================
+           ПОПАПЫ И УВЕДОМЛЕНИЯ
+           ========================================= */
+        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #4caf50; color: white; padding: 12px 24px; border-radius: 30px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); opacity: 0; transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); z-index: 9999; }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        .qr-modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px); z-index: 1000; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.3s;
-        }
-        .qr-modal.active { display: flex; opacity: 1; }
-        .qr-content { background: white; padding: 30px; border-radius: 20px; text-align: center; position: relative; max-width: 300px; }
-        .qr-content h3 { color: #000; margin-bottom: 15px; font-size: 1.2rem; }
-        #qrcode { display: flex; justify-content: center; margin-bottom: 15px; }
-        #qrcode img { border-radius: 10px; }
-        .qr-close { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #666; font-weight: bold; }
+        .qr-modal, .exit-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 2000; display: none; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; }
+        .qr-modal.active, .exit-popup.active { display: flex; opacity: 1; }
+        .modal-content { background: var(--bg-main); border: 1px solid var(--glass-border); padding: 35px; border-radius: 24px; text-align: center; position: relative; max-width: 350px; width: 90%; box-shadow: var(--card-shadow); }
+        .modal-content h3 { color: var(--text-main); margin-bottom: 15px; font-size: 1.3rem; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); font-weight: bold; transition: 0.2s; }
+        .close-btn:hover { color: var(--accent-color); }
+        #qrcode { display: flex; justify-content: center; margin-bottom: 15px; background: #fff; padding: 15px; border-radius: 12px; }
 
-        /* Анимации появления */
+        /* Стики-кнопка (Мобильные) */
+        .sticky-btn { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: #000; padding: 15px 32px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; box-shadow: 0 10px 30px rgba(255,204,0,0.4); z-index: 1500; display: none; white-space: nowrap; border: none; cursor: pointer; transition: 0.3s; }
+        .sticky-btn:active { transform: translateX(-50%) scale(0.95); }
+        
         .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1); }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
         footer { text-align: center; padding: 30px 0; border-top: 1px solid var(--glass-border); font-size: 0.9rem; color: var(--text-muted); margin-top: auto; }
 
-        /* Адаптив под мобильные устройства */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .sticky-btn { display: block; }
             .menu-toggle { display: block; z-index: 102; }
-            .nav-links {
-                display: none; position: absolute; top: calc(100% + 15px); left: 0; right: 0;
-                background: var(--bg-main); border: 1px solid var(--glass-border); border-radius: 16px;
-                flex-direction: column; padding: 20px; gap: 15px; text-align: center;
-                box-shadow: var(--card-shadow); backdrop-filter: blur(20px);
-                z-index: 101; 
-            }
+            .nav-links { display: none; position: absolute; top: calc(100% + 15px); left: 0; right: 0; background: var(--bg-main); border: 1px solid var(--glass-border); border-radius: 16px; flex-direction: column; padding: 20px; gap: 15px; text-align: center; box-shadow: var(--card-shadow); backdrop-filter: blur(20px); z-index: 101; }
             .nav-links.active { display: flex; }
+            .logos-wrap img { height: 24px; }
         }
     </style>
 </head>
 <body>
-    <div class="glow-circle"></div>
-    <div class="glow-circle right"></div>
 
     <div id="toast" class="toast">✅ Код успешно скопирован!</div>
 
-    <!-- Модалка QR -->
     <div id="qrModal" class="qr-modal" aria-hidden="true" role="dialog">
-        <div class="qr-content">
-            <span class="qr-close" onclick="closeQR()" aria-label="Закрыть окно">×</span>
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('qrModal')" aria-label="Закрыть">×</span>
             <h3>Отсканируй камерой</h3>
             <div id="qrcode"></div>
-            <p style="color: #666; font-size: 0.9rem;">Наведи камеру смартфона, чтобы моментально перейти к акции</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Наведи камеру смартфона, чтобы моментально перейти к акции</p>
         </div>
     </div>
+
+    <div id="exitPopup" class="exit-popup" aria-hidden="true" role="dialog">
+        <div class="modal-content" style="border-color: var(--accent-color);">
+            <h3>Подожди! Не уходи без выгоды 🔥</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Активируй промокоды сейчас и сэкономь тысячи рублей уже сегодня.</p>
+            <button onclick="activateAll(); closeModal('exitPopup')" class="btn btn-primary" style="margin-bottom: 15px;">Забрать все промокоды</button>
+            <button onclick="closeModal('exitPopup')" style="background:none; border:none; color:var(--text-muted); font-size: 0.9rem; cursor:pointer; text-decoration: underline;">Я просто смотрю</button>
+        </div>
+    </div>
+
+    <button id="stickyBtn" class="sticky-btn" onclick="activateAll()">🚀 Забрать всё сразу</button>
 
     <header>
         <div class="container nav-container">
@@ -275,147 +240,151 @@
             <div class="header-controls">
                 <nav class="nav-links" id="navLinks">
                     <a href="#offers" onclick="toggleMenu(false)">Предложения</a>
-                    <a href="#blog" onclick="toggleMenu(false)">Лайфхаки</a>
                     <a href="#reviews" onclick="toggleMenu(false)">Отзывы</a>
+                    <a href="#faq" onclick="toggleMenu(false)">FAQ</a>
                 </nav>
-                <button id="share-btn" class="control-btn" title="Поделиться сайтом" aria-label="Поделиться сайтом">🔗</button>
-                <button id="theme-toggle" class="control-btn" aria-label="Сменить цветовую тему">☀️</button>
-                <button class="menu-toggle" id="menuToggle" aria-label="Открыть мобильное меню">☰</button>
+                <button id="share-btn" class="control-btn" title="Поделиться сайтом" aria-label="Поделиться сайтом">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:-2px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>
+                </button>
+                <button id="theme-toggle" class="control-btn" aria-label="Сменить тему">☀️</button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">☰</button>
             </div>
         </div>
     </header>
 
     <main class="container">
         <section class="hero fade-up">
-            <h1 id="dynamic-greeting">Добро пожаловать!</h1>
-            <p>Актуальные проверенные промокоды и бонусные ссылки на популярные экосистемы.</p>
-        </section>
+            <h1>Забери бабки с Яндекса, пока все спят 🔥</h1>
+            <p>Рабочие промокоды на Плюс, Маркет и Кинопоиск. Экономия в реальном времени.</p>
+            
+            <div class="logos-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Yandex_Logo.svg/200px-Yandex_Logo.svg.png" height="32" alt="Яндекс" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Kinopoisk.svg/200px-Kinopoisk.svg.png" height="32" alt="Кинопоиск" loading="lazy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Yandex.Market_logo.svg/200px-Yandex.Market_logo.svg.png" height="32" alt="Маркет" loading="lazy">
+            </div>
 
-        <!-- Квиз -->
-        <section class="quiz-container fade-up" style="transition-delay: 0.1s;">
-            <h3>🎯 Быстрый подбор: Что вас интересует больше всего?</h3>
-            <div class="quiz-options">
-                <button class="quiz-btn" onclick="highlightOffer('card-yandex')">Кино и Музыка 🎬</button>
-                <button class="quiz-btn" onclick="highlightOffer('card-market')">Выгодные покупки 🛍️</button>
-                <button class="quiz-btn" onclick="highlightOffer('card-cinema')">Фильмы и Сериалы 🍿</button>
+            <div class="stats-block">
+                <p>✅ Сейчас работают <strong>9 из 10</strong> промокодов</p>
+                <div class="live-counter">Активировали сегодня: <span id="activatedCount">1 243</span> чел.</div>
             </div>
         </section>
 
-        <!-- Сетка предложений -->
+        <section class="quiz-container fade-up" style="transition-delay: 0.1s;">
+            <h3>🎯 Быстрый подбор: Что тебя интересует?</h3>
+            <div class="quiz-options">
+                <button class="quiz-btn" onclick="highlightOffer('card-yandex')">Кино и Музыка 🎬</button>
+                <button class="quiz-btn" onclick="highlightOffer('card-market')">Шопинг 🛍️</button>
+                <button class="quiz-btn" onclick="highlightOffer('card-cinema')">Фильмы 🍿</button>
+            </div>
+        </section>
+
         <section class="grid" id="offers">
             
-            <!-- Яндекс Плюс -->
-            <article class="card fade-up" id="card-yandex" style="transition-delay: 0.1s;">
+            <article class="card fade-up" id="card-yandex">
                 <div class="badge badge-fire">🔥 Топ месяца</div>
-                <button class="qr-btn" onclick="showQR('https://plus.yandex.ru')" title="Открыть QR код" aria-label="Показать QR-код">📱</button>
+                <button class="qr-btn" onclick="showQR('https://plus.yandex.ru')" title="Показать QR-код">📱</button>
                 
                 <h2>Яндекс Плюс</h2>
-                <p>Фильмы на Кинопоиске, треки в Яндекс Музыке и накопление баллов кэшбэка в Такси и Доставке.</p>
+                <p>Фильмы на Кинопоиске, треки в Музыке и кэшбэк баллами в Такси и Еде.</p>
                 
-                <div class="promo-box" onclick="copyPromo('PLUS2026', this)" title="Нажмите, чтобы скопировать">
+                <div class="promo-box" onclick="copyPromo('PLUS2026', this)">
                     <code>PLUS2026</code>
                     <span class="copy-icon">📋</span>
                 </div>
 
                 <div class="fomo-box">
-                    <div class="fomo-text">
-                        <span>Осталось мест по акции:</span>
-                        <span id="fomo-count">--</span>
-                    </div>
+                    <div class="fomo-text"><span>Осталось активаций:</span><span id="fomo-count">--</span></div>
                     <div class="fomo-bar-bg"><div class="fomo-bar-fill" id="fomo-fill"></div></div>
                 </div>
 
-                <a href="https://plus.yandex.ru" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Активировать Плюс</a>
+                <button onclick="quickActivate('PLUS2026', 'https://plus.yandex.ru')" class="btn btn-primary">Активировать в 1 клик</button>
+                <a href="https://plus.yandex.ru" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Перейти вручную</a>
                 <div class="verification-block">ID площадки: <span class="text-card-id"></span></div>
             </article>
 
-            <!-- Яндекс Маркет -->
-            <article class="card fade-up" id="card-market" style="transition-delay: 0.2s;">
+            <article class="card fade-up" id="card-market" style="transition-delay: 0.1s;">
                 <div class="badge badge-new">Новинка</div>
-                <button class="qr-btn" onclick="showQR('https://market.yandex.ru')" title="Открыть QR код" aria-label="Показать QR-код">📱</button>
+                <button class="qr-btn" onclick="showQR('https://market.yandex.ru')" title="Показать QR-код">📱</button>
                 
                 <h2>Яндекс Маркет</h2>
-                <p>Огромный выбор товаров от электроники до продуктов с быстрой доставкой и скидкой на первый заказ.</p>
+                <p>Огромный выбор товаров от электроники до продуктов со скидкой на первый заказ.</p>
                 
-                <div class="promo-box" onclick="copyPromo('MARKET500', this)" title="Нажмите, чтобы скопировать">
+                <div class="promo-box" onclick="copyPromo('MARKET500', this)">
                     <code>MARKET500</code>
                     <span class="copy-icon">📋</span>
                 </div>
 
-                <a href="https://market.yandex.ru" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Перейти за покупками</a>
+                <button onclick="quickActivate('MARKET500', 'https://market.yandex.ru')" class="btn btn-primary">Активировать в 1 клик</button>
+                <a href="https://market.yandex.ru" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Перейти вручную</a>
                 <div class="verification-block">ID площадки: <span class="text-card-id"></span></div>
             </article>
 
-            <!-- Кинопоиск HD -->
-            <article class="card fade-up" id="card-cinema" style="transition-delay: 0.3s;">
-                <button class="qr-btn" onclick="showQR('https://hd.kinopoisk.ru')" title="Открыть QR код" aria-label="Показать QR-код">📱</button>
+            <article class="card fade-up" id="card-cinema" style="transition-delay: 0.2s;">
+                <button class="qr-btn" onclick="showQR('https://hd.kinopoisk.ru')" title="Показать QR-код">📱</button>
                 
                 <h2>Кинопоиск HD</h2>
-                <p>Эксклюзивный доступ к тысячам фильмов, мультфильмов и сериалов в отличном качестве без рекламы.</p>
+                <p>Эксклюзивный доступ к тысячам фильмов и сериалов в 4K без рекламы.</p>
                 
-                <div class="promo-box" onclick="copyPromo('KINO60FREE', this)" title="Нажмите, чтобы скопировать">
+                <div class="promo-box" onclick="copyPromo('KINO60FREE', this)">
                     <code>KINO60FREE</code>
                     <span class="copy-icon">📋</span>
                 </div>
 
-                <a href="https://hd.kinopoisk.ru" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Смотреть 60 дней бесплатно</a>
+                <button onclick="quickActivate('KINO60FREE', 'https://hd.kinopoisk.ru')" class="btn btn-primary">Активировать в 1 клик</button>
+                <a href="https://hd.kinopoisk.ru" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Перейти вручную</a>
                 <div class="verification-block">ID площадки: <span class="text-card-id"></span></div>
             </article>
         </section>
 
-        <!-- Полезные лайфхаки -->
-        <section class="blog-section fade-up" id="blog">
-            <h2>💡 Полезные лайфхаки для экономии</h2>
-            <div class="blog-grid">
-                <article class="blog-card">
-                    <h3>Как быстрее копить баллы?</h3>
-                    <p>Подключите семейную группу. Тратить и зарабатывать баллы Плюса можно вчетвером, при этом баланс будет общим, что ускоряет накопление.</p>
-                </article>
-                <article class="blog-card">
-                    <h3>Умные заказы на маркетплейсах</h3>
-                    <p>Всегда сравнивайте цену товара в приложении и веб-версии, а также используйте купоны продавцов совместно с нашими промокодами для двойной скидки.</p>
-                </article>
-                <article class="blog-card">
-                    <h3>Уведомления об отмене</h3>
-                    <p>Вы можете отключить автопродление в личном кабинете сразу после активации промокода. Бонусный период не сгорит, а деньги не спишутся.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- Блок реальных отзывов -->
         <section class="reviews-section fade-up" id="reviews">
             <h2>💬 Что говорят пользователи</h2>
             <div class="reviews-grid">
                 <div class="review-card">
                     <div class="review-header">
-                        <span class="review-avatar">👨‍💻</span>
+                        <img src="https://i.pravatar.cc/96?u=42" class="review-avatar" alt="Алексей Морозов" loading="lazy">
                         <div class="review-info">
-                            <h4>Алексей К.</h4>
+                            <h4>Алексей Морозов</h4>
                             <div class="review-stars">★★★★★</div>
                         </div>
                     </div>
-                    <p>«Промокод PLUS2026 сработал моментально! Кинопоиск завелся бесплатно на два месяца. Очень удобный интерфейс без назойливой рекламы.»</p>
+                    <p>«PLUS2026 реально сработал. Получил 60 дней Кинопоиска HD бесплатно. Кнопка "в один клик" — огонь, не надо ничего копировать руками.»</p>
                 </div>
                 <div class="review-card">
                     <div class="review-header">
-                        <span class="review-avatar">👩‍💼</span>
+                        <img src="https://i.pravatar.cc/96?u=12" class="review-avatar" alt="Елена В." loading="lazy">
                         <div class="review-info">
-                            <h4>Мария Д.</h4>
+                            <h4>Елена В.</h4>
                             <div class="review-stars">★★★★★</div>
                         </div>
                     </div>
-                    <p>«Обычно на таких агрегаторах половина кодов просрочена, а тут MARKET500 зашел без проблем на первый заказ. Сайт улетел в закладки.»</p>
+                    <p>«Обычно половина кодов просрочена, а тут MARKET500 зашел без проблем на первый заказ. Сэкономила 500 рублей на ровном месте.»</p>
                 </div>
                 <div class="review-card">
                     <div class="review-header">
-                        <span class="review-avatar">🧑‍🎓</span>
+                        <img src="https://i.pravatar.cc/96?u=33" class="review-avatar" alt="Дмитрий С." loading="lazy">
                         <div class="review-info">
                             <h4>Дмитрий С.</h4>
-                            <div class="review-stars">★★★★★</div>
+                            <div class="review-stars">★★★★☆</div>
                         </div>
                     </div>
-                    <p>«Генерация QR-кодов прямо на экране — это гениально. С телефона отсканировал и сразу перешел к активации. Респектую за удобство!»</p>
+                    <p>«Генерация QR-кодов прямо на экране — гениально. С телефона отсканировал и сразу перешел к активации. Респектую.»</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="faq-section fade-up" id="faq">
+            <h2>Часто задаваемые вопросы</h2>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Как активировать промокод? <span>▼</span></div>
+                <div class="faq-answer">Нажмите кнопку «Активировать в 1 клик». Код скопируется автоматически, и откроется официальная страница сервиса, где нужно вставить код в специальное поле.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Что делать, если код не сработал? <span>▼</span></div>
+                <div class="faq-answer">Убедитесь, что вы выполняете условия (например, код только для новых пользователей). Попробуйте зарегистрировать новый аккаунт или выберите другой код из нашего списка.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Спишут ли деньги после бесплатного периода? <span>▼</span></div>
+                <div class="faq-answer">Да, если вы не отключите автопродление. Мы рекомендуем привязать карту, активировать подписку, а затем сразу зайти в настройки профиля и отвязать карту. Бонусные дни не сгорят!</div>
             </div>
         </section>
     </main>
@@ -427,18 +396,38 @@
         </div>
     </footer>
 
-    <!-- Скрипты -->
     <script>
         const YANDEX_ID = "bvd47ynggeeihgm5";
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // 1. Авто-синхронизация ID
-            document.querySelectorAll('.text-card-id').forEach(el => {
-                el.textContent = YANDEX_ID;
+            // 1. Установка ТЁМНОЙ темы по умолчанию
+            if (!localStorage.getItem('theme')) {
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            const currentTheme = localStorage.getItem('theme');
+            const themeToggle = document.getElementById('theme-toggle');
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            themeToggle.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+
+            themeToggle.addEventListener('click', () => {
+                let theme = document.documentElement.getAttribute('data-theme');
+                if (theme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.textContent = '☀️';
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.textContent = '🌙';
+                }
             });
 
-            // 2. Умное динамическое SEO
+            // 2. Авто-синхронизация ID
+            document.querySelectorAll('.text-card-id').forEach(el => el.textContent = YANDEX_ID);
+
+            // 3. Динамическое SEO
             const currentUrl = window.location.href.split('#')[0].split('?')[0];
             document.getElementById('canonical-link').setAttribute('href', currentUrl);
             document.getElementById('og-url').setAttribute('content', currentUrl);
@@ -450,184 +439,174 @@
                 schemaEl.textContent = JSON.stringify(schemaObj);
             }
 
-            // 3. Мобильное меню
+            // 4. Мобильное меню
             const menuToggle = document.getElementById('menuToggle');
             const navLinks = document.getElementById('navLinks');
-            
             menuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 menuToggle.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
             });
-
             window.toggleMenu = function(state) {
-                if(!state) {
-                    navLinks.classList.remove('active');
-                    menuToggle.textContent = '☰';
-                }
+                if(!state) { navLinks.classList.remove('active'); menuToggle.textContent = '☰'; }
             };
 
-            // 4. Фича «Поделиться сайтом» (Web Share API)
+            // 5. Поделиться (Web Share API)
             const shareBtn = document.getElementById('share-btn');
             if (shareBtn) {
                 shareBtn.addEventListener('click', () => {
                     if (navigator.share) {
-                        navigator.share({
-                            title: document.title,
-                            text: 'Нашел отличный хаб с рабочими промокодами Яндекс Плюс и Маркет! Забирай:',
-                            url: window.location.href
-                        }).catch(err => console.log('Ошибка шеринга:', err));
+                        navigator.share({ title: document.title, text: 'Рабочие промокоды Яндекс Плюс!', url: window.location.href })
+                        .catch(err => console.log('Ошибка шеринга:', err));
                     } else {
-                        navigator.clipboard.writeText(window.location.href).then(() => {
-                            showToast('🔗 Ссылка на сайт скопирована в буфер!');
-                        });
+                        navigator.clipboard.writeText(window.location.href).then(() => showToast('🔗 Ссылка скопирована!'));
                     }
                 });
             }
 
-            // 5. Адаптивное приветствие
-            const hour = new Date().getHours();
-            const greetingEl = document.getElementById('dynamic-greeting');
-            if (hour >= 5 && hour < 12) greetingEl.textContent = 'Доброе утро! ☀️';
-            else if (hour >= 12 && hour < 18) greetingEl.textContent = 'Добрый день! 👋';
-            else if (hour >= 18 && hour < 23) greetingEl.textContent = 'Добрый вечер! 🌇';
-            else greetingEl.textContent = 'Доброй ночи! 🌙 Время для кино.';
+            // 6. Счётчик активаций (Живой)
+            let activated = 1243;
+            setInterval(() => {
+                activated += Math.floor(Math.random() * 3) + 1;
+                document.getElementById('activatedCount').textContent = activated.toLocaleString('ru-RU');
+            }, 4500);
 
-            // 6. Улучшенный FOMO-счетчик
-            const fomoCountEl = document.getElementById('fomo-count');
-            const fomoFillEl = document.getElementById('fomo-fill');
-            
+            // 7. Смягченный FOMO (интервал больше)
             let currentSpots = sessionStorage.getItem('fomo_spots');
             if (!currentSpots) {
                 currentSpots = Math.floor(Math.random() * (19 - 12 + 1)) + 12;
                 sessionStorage.setItem('fomo_spots', currentSpots);
-            } else {
-                currentSpots = parseInt(currentSpots, 10);
-            }
+            } else { currentSpots = parseInt(currentSpots, 10); }
 
             function updateFomoUI() {
-                fomoCountEl.textContent = `${currentSpots} из 100`;
-                fomoFillEl.style.width = `${currentSpots}%`;
+                document.getElementById('fomo-count').textContent = `${currentSpots} из 100`;
+                document.getElementById('fomo-fill').style.width = `${currentSpots}%`;
             }
-
             setTimeout(updateFomoUI, 400);
 
             function runDynamicFomo() {
-                const randomDelay = Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000;
+                const randomDelay = Math.floor(Math.random() * (35000 - 15000 + 1)) + 15000; // 15-35 сек
                 setTimeout(() => {
                     if (currentSpots > 3) {
-                        currentSpots--;
-                        sessionStorage.setItem('fomo_spots', currentSpots);
-                        updateFomoUI();
-                        runDynamicFomo();
+                        currentSpots--; sessionStorage.setItem('fomo_spots', currentSpots); updateFomoUI(); runDynamicFomo();
                     }
                 }, randomDelay);
             }
             runDynamicFomo();
 
-            // 7. Смена тем
-            const themeToggle = document.getElementById('theme-toggle');
-            const currentTheme = localStorage.getItem('theme');
-            if (currentTheme) {
-                document.documentElement.setAttribute('data-theme', currentTheme);
-                themeToggle.textContent = currentTheme === 'light' ? '🌙' : '☀️';
-            }
+            // 8. Скролл-анимации
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.05 });
+            document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
 
-            themeToggle.addEventListener('click', () => {
-                let theme = document.documentElement.getAttribute('data-theme');
-                if (theme === 'light') {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'dark');
-                    themeToggle.textContent = '☀️';
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                    themeToggle.textContent = '🌙';
+            // 9. Exit-Intent Popup (Только для десктопа)
+            let exitShown = sessionStorage.getItem('exit_shown');
+            document.addEventListener('mouseleave', e => {
+                if (e.clientY < 10 && !exitShown) {
+                    const popup = document.getElementById('exitPopup');
+                    popup.style.display = 'flex';
+                    setTimeout(() => popup.classList.add('active'), 10);
+                    sessionStorage.setItem('exit_shown', 'true');
+                    exitShown = true;
                 }
             });
 
-            // 8. Скролл-анимации
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
-            }, { threshold: 0.05 });
-
-            document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
-
-            // 9. Доступность: ESC
+            // Закрытие модалок по ESC
             window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeQR();
+                if (e.key === 'Escape') { closeModal('qrModal'); closeModal('exitPopup'); }
             });
         });
 
-        // 10. Квиз-подсветка
+        // --- ФУНКЦИИ ---
+
+        function toggleFAQ(element) {
+            const answer = element.querySelector('.faq-answer');
+            const span = element.querySelector('.faq-question span');
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none'; span.style.transform = 'rotate(0deg)';
+            } else {
+                answer.style.display = 'block'; span.style.transform = 'rotate(180deg)';
+            }
+        }
+
         function highlightOffer(cardId) {
             const card = document.getElementById(cardId);
             document.getElementById('offers').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
             document.querySelectorAll('.card').forEach(c => c.classList.remove('highlight-pulse'));
             setTimeout(() => { card.classList.add('highlight-pulse'); }, 400);
         }
 
-        // 11. Функция вызова уведомлений
         function showToast(text) {
             const toast = document.getElementById('toast');
-            toast.textContent = text;
-            toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 2500);
+            toast.textContent = text; toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        // 12. Копирование промокодов
+        // Анимация конфетти
+        function createConfetti() {
+            for (let i = 0; i < 40; i++) {
+                const c = document.createElement('div');
+                c.textContent = ['🔥','🎉','💰','✨'][Math.floor(Math.random()*4)];
+                c.style.position = 'fixed'; c.style.left = Math.random() * 100 + 'vw';
+                c.style.top = '-30px'; c.style.fontSize = (Math.random() * 14 + 16) + 'px';
+                c.style.zIndex = '9999'; c.style.pointerEvents = 'none';
+                document.body.appendChild(c);
+
+                setTimeout(() => {
+                    c.style.transition = 'all 2.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
+                    c.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 1200 - 600}deg)`;
+                    c.style.opacity = '0';
+                }, 30);
+
+                setTimeout(() => c.remove(), 3500);
+            }
+        }
+
         function copyPromo(code, element) {
             navigator.clipboard.writeText(code).then(() => {
-                const icon = element.querySelector('.copy-icon');
-                
-                if (icon) {
-                    icon.textContent = '✅';
-                    setTimeout(() => { icon.textContent = '📋'; }, 1500);
+                if (element) {
+                    const icon = element.querySelector('.copy-icon');
+                    if (icon) { icon.textContent = '✅'; setTimeout(() => icon.textContent = '📋', 1500); }
+                    element.classList.add('copied');
+                    setTimeout(() => element.classList.remove('copied'), 1500);
                 }
-
-                // Переключение CSS-класса для красивой плавной подсветки
-                element.classList.add('copied');
-                setTimeout(() => element.classList.remove('copied'), 1500);
-
-                showToast('✅ Код успешно скопирован!');
-            }).catch(err => {
-                console.error('Ошибка копирования: ', err);
-            });
+                showToast('✅ Код скопирован!');
+                createConfetti();
+            }).catch(err => console.error('Ошибка копирования: ', err));
         }
 
-        // 13. Генерация QR кодов
-        const qrModal = document.getElementById('qrModal');
-        const qrContainer = document.getElementById('qrcode');
+        // Кнопка One-Click
+        function quickActivate(code, url) {
+            copyPromo(code, null);
+            setTimeout(() => window.open(url, '_blank'), 400);
+        }
 
+        // Кнопка Забрать Всё
+        function activateAll() {
+            showToast('🔥 Коды активированы! Перенаправляем...');
+            createConfetti();
+            setTimeout(() => window.open('https://plus.yandex.ru', '_blank'), 800);
+        }
+
+        // QR Коды и Модалки
+        const qrContainer = document.getElementById('qrcode');
         function showQR(url) {
             qrContainer.innerHTML = ""; 
-            
-            new QRCode(qrContainer, {
-                text: url,
-                width: 200,
-                height: 200,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-
-            qrModal.style.display = 'flex';
-            setTimeout(() => {
-                qrModal.classList.add('active');
-                qrModal.setAttribute('aria-hidden', 'false');
-            }, 10);
+            new QRCode(qrContainer, { text: url, width: 200, height: 200, colorDark : "#000", colorLight : "#fff", correctLevel : QRCode.CorrectLevel.H });
+            const modal = document.getElementById('qrModal');
+            modal.style.display = 'flex';
+            setTimeout(() => { modal.classList.add('active'); modal.setAttribute('aria-hidden', 'false'); }, 10);
         }
 
-        function closeQR() {
-            qrModal.classList.remove('active');
-            qrModal.setAttribute('aria-hidden', 'true');
-            setTimeout(() => { qrModal.style.display = 'none'; }, 300);
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('active'); modal.setAttribute('aria-hidden', 'true');
+            setTimeout(() => modal.style.display = 'none', 300);
         }
 
-        qrModal.addEventListener('click', (e) => {
-            if (e.target === qrModal) closeQR();
+        // Закрытие модалок по клику вне области
+        document.querySelectorAll('.qr-modal, .exit-popup').forEach(modal => {
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal.id); });
         });
     </script>
 </body>
