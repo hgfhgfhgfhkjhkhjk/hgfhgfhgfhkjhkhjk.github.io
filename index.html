@@ -131,12 +131,7 @@
             display: flex;
             gap: 15px;
         }
-        .review-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+        .review-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
 
         .faq-item {
             background: var(--glass);
@@ -162,7 +157,7 @@
     <main class="container">
         <section class="hero">
             <h1>Яндекс Плюс<br>45 дней бесплатно</h1>
-            <p>Активируй по промокоду и получи все преимущества сервиса</p>
+            <p>Активируй подписку по промокоду и получи все преимущества</p>
 
             <div class="live-counter">Сегодня активировали: <span id="live-count">248</span> человек 🔥</div>
 
@@ -185,20 +180,20 @@
             </div>
         </section>
 
-        <!-- Почему выгодно через нас -->
+        <!-- Почему выгодно -->
         <section class="section" style="padding:40px 0;">
             <h2 style="text-align:center;margin-bottom:30px;">Почему выгодно через нас</h2>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;text-align:center;">
-                <div>✅ Самые свежие рабочие промокоды</div>
+                <div>✅ Самые свежие промокоды</div>
                 <div>✅ Проверено на реальных аккаунтах</div>
-                <div>✅ Простая активация в 1 клик</div>
-                <div>✅ Поддержка и инструкции</div>
+                <div>✅ Активация в 1 клик</div>
+                <div>✅ Подробные инструкции</div>
             </div>
         </section>
 
-        <!-- Таблица сравнения -->
+        <!-- Сравнение -->
         <section class="section">
-            <h2 style="text-align:center;margin-bottom:25px;">Сравнение цен</h2>
+            <h2 style="text-align:center;margin-bottom:25px;">Сравнение</h2>
             <table style="width:100%;border-collapse:collapse;background:var(--glass);border-radius:16px;overflow:hidden;">
                 <tr style="background:rgba(255,204,0,0.1);">
                     <th style="padding:15px;text-align:left;">Условие</th>
@@ -206,7 +201,7 @@
                     <th style="padding:15px;color:var(--accent);">С нашим промокодом</th>
                 </tr>
                 <tr>
-                    <td style="padding:15px;border-top:1px solid var(--border);">Первый месяц</td>
+                    <td style="padding:15px;border-top:1px solid var(--border);">Первый период</td>
                     <td style="padding:15px;border-top:1px solid var(--border);">449 ₽</td>
                     <td style="padding:15px;border-top:1px solid var(--border);color:#4ade80;font-weight:bold;">0 ₽ (45 дней)</td>
                 </tr>
@@ -218,27 +213,58 @@
             </table>
         </section>
 
-        <!-- Преимущества, Инструкция, Отзывы, FAQ — оставил как раньше, но добавил больше отзывов -->
-
-        <!-- Больше отзывов -->
+        <!-- Преимущества -->
         <section class="section">
-            <h2 style="text-align:center;margin-bottom:30px;">Отзывы реальных пользователей</h2>
-            <div class="review-card">
-                <img src="https://i.pravatar.cc/60?u=1" class="review-avatar" alt="">
-                <div><strong>Алексей Морозов</strong><br>«Отличный промокод! 45 дней бесплатно, всё работает.»</div>
-            </div>
-            <div class="review-card">
-                <img src="https://i.pravatar.cc/60?u=2" class="review-avatar" alt="">
-                <div><strong>Марина Ковалёва</strong><br>«Подключила, поделилась с мужем и дочкой. Всем очень нравится.»</div>
-            </div>
-            <div class="review-card">
-                <img src="https://i.pravatar.cc/60?u=3" class="review-avatar" alt="">
-                <div><strong>Дмитрий Соколов</strong><br>«Самый удобный способ активировать Плюс. Спасибо!»</div>
+            <h2 style="text-align:center;margin-bottom:30px;">Что входит в Плюс</h2>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">🎥</span><div><strong>Кинопоиск HD</strong><br>Фильмы и сериалы в 4K</div></div>
+                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">🎵</span><div><strong>Музыка</strong><br>Без рекламы + скачивание</div></div>
+                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">📚</span><div><strong>Книги</strong><br>Электронные и аудио</div></div>
+                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">👨‍👩‍👧‍👦</span><div><strong>До 4 человек</strong><br>Семейная подписка</div></div>
             </div>
         </section>
 
-        <!-- Sticky кнопка -->
-        <button class="sticky-btn" onclick="activateAll()">🚀 Активировать 45 дней бесплатно</button>
+        <!-- Инструкция -->
+        <section class="section">
+            <h2 style="text-align:center;margin-bottom:30px;">Как активировать</h2>
+            <ol style="list-style:none;">
+                <li style="padding:15px 0;border-bottom:1px solid var(--border);">1. Нажми кнопку «Активировать 45 дней бесплатно»</li>
+                <li style="padding:15px 0;border-bottom:1px solid var(--border);">2. Авторизуйся в аккаунте Яндекса</li>
+                <li style="padding:15px 0;border-bottom:1px solid var(--border);">3. Введи промокод <strong>N3GEL3U5FD</strong></li>
+                <li style="padding:15px 0;border-bottom:1px solid var(--border);">4. Привяжи карту (сейчас 0 ₽)</li>
+                <li style="padding:15px 0;">5. Наслаждайся подпиской!</li>
+            </ol>
+        </section>
+
+        <!-- Отзывы -->
+        <section class="section">
+            <h2 style="text-align:center;margin-bottom:30px;">Отзывы</h2>
+            <div class="review-card">
+                <img src="https://i.pravatar.cc/60?u=1" class="review-avatar" alt="">
+                <div><strong>Алексей Морозов</strong><br>«Работает отлично! 45 дней бесплатно получил.»</div>
+            </div>
+            <div class="review-card">
+                <img src="https://i.pravatar.cc/60?u=2" class="review-avatar" alt="">
+                <div><strong>Марина Ковалёва</strong><br>«Подключила на всю семью. Очень удобно.»</div>
+            </div>
+            <div class="review-card">
+                <img src="https://i.pravatar.cc/60?u=3" class="review-avatar" alt="">
+                <div><strong>Дмитрий Соколов</strong><br>«Самый простой способ получить Плюс.»</div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2 style="text-align:center;margin-bottom:30px;">FAQ</h2>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div style="padding:18px;font-weight:600;cursor:pointer;">Спишут ли деньги после 45 дней?</div>
+                <div class="faq-answer" style="padding:0 18px 18px;display:none;color:var(--muted);">Да, если не отключить автопродление в настройках.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div style="padding:18px;font-weight:600;cursor:pointer;">Можно ли активировать несколько раз?</div>
+                <div class="faq-answer" style="padding:0 18px 18px;display:none;color:var(--muted);">Промокод многоразовый — могут использовать все.</div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -247,10 +273,13 @@
         </div>
     </footer>
 
-    <!-- QR Modal и Exit Popup -->
+    <!-- Sticky Button -->
+    <button class="sticky-btn" onclick="activateAll()">🚀 Активировать 45 дней бесплатно</button>
+
+    <!-- QR Modal -->
     <div id="qrModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;">
         <div style="background:#111;padding:30px;border-radius:24px;text-align:center;max-width:340px;">
-            <h3>Отсканируй камерой</h3>
+            <h3>Отсканируй и активируй</h3>
             <div id="qrcode" style="margin:20px auto;"></div>
             <button onclick="closeQR()" style="padding:12px 32px;background:var(--accent);color:#000;border:none;border-radius:14px;">Закрыть</button>
         </div>
@@ -265,16 +294,22 @@
         setInterval(() => {
             count += Math.floor(Math.random() * 4) + 1;
             document.getElementById('live-count').textContent = count;
-        }, 7000);
+        }, 6500);
 
         function copyPromo() {
-            navigator.clipboard.writeText(promoCode).then(() => alert("✅ Промокод скопирован!"));
+            navigator.clipboard.writeText(promoCode).then(() => {
+                alert("✅ Промокод скопирован!\n\n" + promoCode);
+            });
         }
 
         function showQR() {
             document.getElementById('qrModal').style.display = 'flex';
             document.getElementById('qrcode').innerHTML = '';
-            new QRCode(document.getElementById('qrcode'), { text: partnerLink, width: 240, height: 240 });
+            new QRCode(document.getElementById('qrcode'), {
+                text: partnerLink,
+                width: 240,
+                height: 240
+            });
         }
 
         function closeQR() {
@@ -293,11 +328,16 @@
                 c.style.position = 'fixed';
                 c.style.left = Math.random() * 100 + 'vw';
                 c.style.top = '-50px';
-                c.style.fontSize = '24px';
+                c.style.fontSize = '26px';
                 c.style.zIndex = '99999';
                 document.body.appendChild(c);
                 setTimeout(() => c.remove(), 5000);
             }
+        }
+
+        function toggleFAQ(el) {
+            const answer = el.querySelector('.faq-answer');
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
         }
 
         // Sticky button
@@ -305,7 +345,23 @@
             if (window.innerWidth < 768) document.querySelector('.sticky-btn').style.display = 'block';
         });
 
-        // Theme toggle, Share, Exit-intent и т.д. можно добавить при необходимости
+        // Share
+        document.getElementById('share-btn').addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: location.href });
+            } else {
+                navigator.clipboard.writeText(location.href);
+                alert('Ссылка скопирована!');
+            }
+        });
+
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            document.getElementById('theme-toggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        });
     </script>
 </body>
 </html>
