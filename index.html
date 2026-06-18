@@ -5,151 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="yandex-verification" content="bvd47ynggeeihgm5" />
     <meta name="robots" content="index, follow">
-    <link rel="canonical" id="canonical-link" href="">
-
+    
+    <link rel="canonical" id="canonical-link" href="https://yourdomain.com/yandex-plus">
     <title>PromoHub — Яндекс Плюс 45 дней бесплатно</title>
-    <meta name="description" content="Активируй Яндекс Плюс по промокоду N3GEL3U5FD — 45 дней бесплатно.">
-
+    <meta name="description" content="Активируй Яндекс Плюс по промокоду N3GEL3U5FD — 45 дней бесплатно. Фильмы, музыка и книги для всей семьи.">
     <meta property="og:title" content="Яндекс Плюс — 45 дней в подарок">
     <meta property="og:description" content="Подключи по промокоду N3GEL3U5FD">
-    <meta property="og:url" id="og-url" content="">
+    <meta property="og:url" id="og-url" content="https://yourdomain.com/yandex-plus">
     <meta property="og:image" content="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1200&auto=format&fit=crop">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
     <style>
+        /* Базовые переменные и темы */
         :root {
             --bg-main: #0b0c10;
             --accent: #ffcc00;
+            --accent-hover: #e6b800;
             --text: #f8f9fa;
             --muted: #a0aab2;
-            --glass: rgba(255,255,255,0.07);
-            --border: rgba(255,255,255,0.15);
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #4ade80;
+            --danger: #ff4b2b;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
         }
         [data-theme="light"] {
             --bg-main: #f8f9fa;
             --text: #1f1f1f;
             --muted: #555;
-            --glass: rgba(0,0,0,0.05);
-            --border: rgba(0,0,0,0.1);
+            --glass: #ffffff;
+            --border: rgba(0, 0, 0, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; }
+        /* Сброс и база */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: var(--bg-main);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            line-height: 1.6;
         }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
+        /* Утилитарные классы */
+        .text-center { text-align: center; }
+        .text-accent { color: var(--accent); }
+        .text-success { color: var(--success); font-weight: bold; }
+        .text-muted { color: var(--muted); }
+        .mb-1 { margin-bottom: 12px; }
+        .mb-2 { margin-bottom: 20px; }
+        .mb-3 { margin-bottom: 30px; }
+        .mt-2 { margin-top: 20px; }
+        
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .flex-gap { display: flex; gap: 15px; }
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .section-pad { padding: 50px 0; }
+        .glass-panel { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); }
+
+        /* Шапка */
         header {
             padding: 15px 0;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            background: rgba(11,12,16,0.95);
-            backdrop-filter: blur(12px);
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             z-index: 100;
         }
-        .nav { display: flex; justify-content: space-between; align-items: center; }
+        [data-theme="light"] header { background: rgba(248, 249, 250, 0.85); }
+        .logo { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.5px; }
+        .icon-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; transition: transform 0.2s; }
+        .icon-btn:hover { transform: scale(1.1); }
 
-        .hero { text-align: center; padding: 60px 0 40px; }
-        .hero h1 { font-size: clamp(2.4rem, 7vw, 3.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+        /* Герой-блок */
+        .hero { text-align: center; padding: 60px 0 40px; animation: fadeIn 0.8s ease-out; }
+        .hero h1 { font-size: clamp(2.4rem, 7vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 16px; letter-spacing: -1px; }
+        .hero-subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 24px; }
 
-        .card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 40px 30px;
-            margin: 30px auto;
-            max-width: 560px;
-            text-align: center;
-        }
+        /* Триггеры доверия */
+        .live-counter { background: rgba(255, 75, 43, 0.15); color: var(--danger); padding: 10px 24px; border-radius: 50px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+        .pulse-dot { width: 8px; height: 8px; background: var(--danger); border-radius: 50%; animation: pulse 1.5s infinite; }
 
+        /* Карточка промокода */
+        .promo-card { padding: 40px 30px; margin: 0 auto; max-width: 560px; transition: transform 0.3s; }
+        .promo-card:hover { transform: translateY(-5px); }
         .promo-box {
-            background: rgba(255, 204, 0, 0.12);
+            background: rgba(255, 204, 0, 0.1);
             border: 2px dashed var(--accent);
             border-radius: 16px;
             padding: 20px;
-            font-size: 1.5rem;
-            font-family: monospace;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-weight: 800;
+            letter-spacing: 2px;
             margin: 25px 0;
             cursor: pointer;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            margin: 12px 0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 16px;
-            text-decoration: none;
-            transition: all 0.25s;
-        }
-        .btn-primary { background: linear-gradient(90deg, #ffcc00, #ffe033); color: #000; }
-        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--text); }
-
-        .sticky-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: #000;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 10px 30px rgba(255,204,0,0.4);
-            z-index: 1500;
-            display: none;
-            white-space: nowrap;
-        }
-
-        .live-counter {
-            background: rgba(255,75,43,0.15);
-            color: #ff4b2b;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-block;
-            margin: 15px 0;
-        }
-
-        .review-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-        }
-        .review-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-
-        .faq-item {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            margin-bottom: 12px;
+            transition: var(--transition);
+            position: relative;
             overflow: hidden;
         }
+        .promo-box:hover { background: rgba(255, 204, 0, 0.2); transform: scale(1.02); }
+        .promo-hint { font-size: 0.9rem; color: var(--muted); margin-top: -15px; margin-bottom: 20px; }
+
+        /* Кнопки */
+        .btn {
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            width: 100%; padding: 18px; margin: 12px 0;
+            font-size: 1.2rem; font-weight: 700; border-radius: 16px;
+            text-decoration: none; transition: var(--transition);
+            cursor: pointer; border: none;
+        }
+        .btn-primary { background: linear-gradient(135deg, #ffcc00, #ffb300); color: #000; box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3); }
+        .btn-primary:hover { box-shadow: 0 6px 20px rgba(255, 204, 0, 0.5); transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--text); }
+        .btn-outline:hover { background: rgba(255, 204, 0, 0.1); }
+        .btn-ghost { background: none; color: var(--accent); font-weight: 600; }
+        .btn-ghost:hover { text-decoration: underline; }
+
+        /* Плавающая кнопка */
+        .sticky-btn {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(135deg, #ffcc00, #ffb300); color: #000;
+            padding: 16px 32px; border-radius: 50px; font-weight: 800; font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4);
+            z-index: 1500; display: none; white-space: nowrap; border: none;
+        }
+
+        /* Таблица */
+        .table-custom { width: 100%; border-collapse: collapse; overflow: hidden; margin-bottom: 20px; }
+        .table-custom th, .table-custom td { padding: 16px; text-align: left; }
+        .table-custom th { background: rgba(255, 204, 0, 0.1); font-weight: 700; }
+        .table-custom tr { border-bottom: 1px solid var(--border); }
+        .table-custom tr:last-child { border-bottom: none; }
+
+        /* Инструкция и фичи */
+        .feature-item { display: flex; gap: 15px; align-items: flex-start; }
+        .feature-icon { font-size: 2.2rem; line-height: 1; }
+        .step-list { list-style: none; counter-reset: steps; }
+        .step-item { padding: 16px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px; font-size: 1.1rem; }
+        .step-item::before {
+            counter-increment: steps; content: counter(steps);
+            background: var(--accent); color: #000; width: 28px; height: 28px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: bold; font-size: 0.9rem; flex-shrink: 0;
+        }
+
+        /* Отзывы */
+        .review-card { padding: 20px; display: flex; gap: 15px; transition: var(--transition); }
+        .review-card:hover { transform: translateX(5px); background: rgba(255, 255, 255, 0.08); }
+        .review-avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+
+        /* FAQ */
+        .faq-item { margin-bottom: 12px; cursor: pointer; transition: var(--transition); }
+        .faq-item:hover { border-color: var(--accent); }
+        .faq-question { padding: 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; color: var(--muted); }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 18px; }
+        .faq-icon { transition: transform 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+        /* Модалка QR */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 9999; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .modal.show { display: flex; opacity: 1; }
+        .modal-content { background: var(--bg-main); padding: 30px; border-radius: 24px; text-align: center; max-width: 340px; border: 1px solid var(--border); box-shadow: var(--shadow); transform: scale(0.9); transition: transform 0.3s; }
+        .modal.show .modal-content { transform: scale(1); }
+
+        /* Всплывающее уведомление (Toast) */
+        .toast {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            background: var(--success); color: #000; padding: 12px 24px; border-radius: 50px;
+            font-weight: bold; z-index: 10000; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4);
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); }
+
+        /* Анимации */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); } }
     </style>
 </head>
 <body>
 
+    <div id="toast" class="toast">✅ Промокод скопирован!</div>
+
     <header>
-        <div class="container nav">
-            <h2 style="font-size: 1.7rem; font-weight: 800;">Promo<span style="color: var(--accent);">Hub</span></h2>
-            <div style="display:flex; gap:15px;">
-                <button id="share-btn" style="background:none;border:none;font-size:1.5rem;cursor:pointer;">🔗</button>
-                <button id="theme-toggle" style="background:none;border:none;font-size:1.5rem;cursor:pointer;">☀️</button>
+        <div class="container flex-between">
+            <div class="logo">Promo<span class="text-accent">Hub</span></div>
+            <div class="flex-gap">
+                <button id="share-btn" class="icon-btn" aria-label="Поделиться">🔗</button>
+                <button id="theme-toggle" class="icon-btn" aria-label="Сменить тему">☀️</button>
             </div>
         </div>
     </header>
@@ -157,210 +211,286 @@
     <main class="container">
         <section class="hero">
             <h1>Яндекс Плюс<br>45 дней бесплатно</h1>
-            <p>Активируй подписку по промокоду и получи все преимущества</p>
+            <p class="hero-subtitle">Кинопоиск, Музыка и Книги для тебя и еще 3 близких</p>
 
-            <div class="live-counter">Сегодня активировали: <span id="live-count">248</span> человек 🔥</div>
+            <div class="live-counter">
+                <div class="pulse-dot"></div>
+                Сегодня активировали: <span id="live-count">...</span> чел. 🔥
+            </div>
 
-            <div class="card">
-                <h2>Твой промокод</h2>
-                <div class="promo-box" onclick="copyPromo()">N3GEL3U5FD 📋</div>
+            <div class="promo-card glass-panel">
+                <h2 class="mb-1">Твой промокод</h2>
+                <div class="promo-box" onclick="copyPromo()" title="Нажми, чтобы скопировать">
+                    N3GEL3U5FD
+                </div>
+                <p class="promo-hint">Нажми на код, чтобы скопировать 📋</p>
 
-                <a href="https://plus.yandex.ru/action/gift/45_perf?utm_source=DI&utm_medium=paid_performance&utm_content=goal-PL&utm_campaign=MSCAMP-1259&promocode=N3GEL3U5FD" 
-                   class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <button onclick="activateAll()" class="btn btn-primary">
                     🚀 Активировать 45 дней бесплатно
-                </a>
+                </button>
 
                 <a href="https://plus.yandex.ru/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
-                    Перейти на plus.yandex.ru
+                    Перейти на сайт Яндекса
                 </a>
 
-                <button onclick="showQR()" style="margin-top:20px;background:none;border:none;color:var(--accent);cursor:pointer;">
-                    📱 Показать QR-код
+                <button onclick="showQR()" class="btn btn-ghost mt-2">
+                    📱 Открыть QR-код для телефона
                 </button>
             </div>
         </section>
 
-        <!-- Почему выгодно -->
-        <section class="section" style="padding:40px 0;">
-            <h2 style="text-align:center;margin-bottom:30px;">Почему выгодно через нас</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;text-align:center;">
-                <div>✅ Самые свежие промокоды</div>
-                <div>✅ Проверено на реальных аккаунтах</div>
-                <div>✅ Активация в 1 клик</div>
-                <div>✅ Подробные инструкции</div>
+        <section class="section-pad">
+            <h2 class="text-center mb-3">Почему выгодно через нас</h2>
+            <div class="grid-cards text-center text-muted">
+                <div class="glass-panel" style="padding: 20px;">✅ <b>Свежие промокоды</b><br>Обновляем базу ежедневно</div>
+                <div class="glass-panel" style="padding: 20px;">✅ <b>Проверено</b><br>Работает на реальных аккаунтах</div>
+                <div class="glass-panel" style="padding: 20px;">✅ <b>Безопасно</b><br>Активация на оф. сайте Яндекса</div>
             </div>
         </section>
 
-        <!-- Сравнение -->
-        <section class="section">
-            <h2 style="text-align:center;margin-bottom:25px;">Сравнение</h2>
-            <table style="width:100%;border-collapse:collapse;background:var(--glass);border-radius:16px;overflow:hidden;">
-                <tr style="background:rgba(255,204,0,0.1);">
-                    <th style="padding:15px;text-align:left;">Условие</th>
-                    <th style="padding:15px;">Без промокода</th>
-                    <th style="padding:15px;color:var(--accent);">С нашим промокодом</th>
-                </tr>
-                <tr>
-                    <td style="padding:15px;border-top:1px solid var(--border);">Первый период</td>
-                    <td style="padding:15px;border-top:1px solid var(--border);">449 ₽</td>
-                    <td style="padding:15px;border-top:1px solid var(--border);color:#4ade80;font-weight:bold;">0 ₽ (45 дней)</td>
-                </tr>
-                <tr>
-                    <td style="padding:15px;">Далее в месяц</td>
-                    <td style="padding:15px;">449 ₽</td>
-                    <td style="padding:15px;">449 ₽</td>
-                </tr>
-            </table>
-        </section>
-
-        <!-- Преимущества -->
-        <section class="section">
-            <h2 style="text-align:center;margin-bottom:30px;">Что входит в Плюс</h2>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
-                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">🎥</span><div><strong>Кинопоиск HD</strong><br>Фильмы и сериалы в 4K</div></div>
-                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">🎵</span><div><strong>Музыка</strong><br>Без рекламы + скачивание</div></div>
-                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">📚</span><div><strong>Книги</strong><br>Электронные и аудио</div></div>
-                <div style="display:flex;gap:15px;"><span style="font-size:2rem;">👨‍👩‍👧‍👦</span><div><strong>До 4 человек</strong><br>Семейная подписка</div></div>
+        <section class="section-pad">
+            <h2 class="text-center mb-3">Сравнение условий</h2>
+            <div class="glass-panel">
+                <table class="table-custom">
+                    <tr>
+                        <th>Условие</th>
+                        <th>Без промокода</th>
+                        <th class="text-accent">С нашим промокодом</th>
+                    </tr>
+                    <tr>
+                        <td>Первый период</td>
+                        <td>449 ₽ (30 дней)</td>
+                        <td class="text-success">0 ₽ (45 дней)</td>
+                    </tr>
+                    <tr>
+                        <td>Далее в месяц</td>
+                        <td>449 ₽</td>
+                        <td>449 ₽ (можно отменить)</td>
+                    </tr>
+                </table>
             </div>
         </section>
 
-        <!-- Инструкция -->
-        <section class="section">
-            <h2 style="text-align:center;margin-bottom:30px;">Как активировать</h2>
-            <ol style="list-style:none;">
-                <li style="padding:15px 0;border-bottom:1px solid var(--border);">1. Нажми кнопку «Активировать 45 дней бесплатно»</li>
-                <li style="padding:15px 0;border-bottom:1px solid var(--border);">2. Авторизуйся в аккаунте Яндекса</li>
-                <li style="padding:15px 0;border-bottom:1px solid var(--border);">3. Введи промокод <strong>N3GEL3U5FD</strong></li>
-                <li style="padding:15px 0;border-bottom:1px solid var(--border);">4. Привяжи карту (сейчас 0 ₽)</li>
-                <li style="padding:15px 0;">5. Наслаждайся подпиской!</li>
-            </ol>
-        </section>
-
-        <!-- Отзывы -->
-        <section class="section">
-            <h2 style="text-align:center;margin-bottom:30px;">Отзывы</h2>
-            <div class="review-card">
-                <img src="https://i.pravatar.cc/60?u=1" class="review-avatar" alt="">
-                <div><strong>Алексей Морозов</strong><br>«Работает отлично! 45 дней бесплатно получил.»</div>
-            </div>
-            <div class="review-card">
-                <img src="https://i.pravatar.cc/60?u=2" class="review-avatar" alt="">
-                <div><strong>Марина Ковалёва</strong><br>«Подключила на всю семью. Очень удобно.»</div>
-            </div>
-            <div class="review-card">
-                <img src="https://i.pravatar.cc/60?u=3" class="review-avatar" alt="">
-                <div><strong>Дмитрий Соколов</strong><br>«Самый простой способ получить Плюс.»</div>
+        <section class="section-pad">
+            <h2 class="text-center mb-3">Всё это уже внутри подписки</h2>
+            <div class="grid-cards">
+                <div class="feature-item">
+                    <div class="feature-icon">🎥</div>
+                    <div><strong>Кинопоиск</strong><br><span class="text-muted">Тысячи фильмов и сериалов в 4K без рекламы. Эксклюзивы.</span></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎵</div>
+                    <div><strong>Яндекс Музыка</strong><br><span class="text-muted">Умные плейлисты, подкасты и скачивание на телефон.</span></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📚</div>
+                    <div><strong>Букмейт</strong><br><span class="text-muted">Библиотека электронных и аудиокниг в одном приложении.</span></div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <div><strong>Для своих</strong><br><span class="text-muted">Добавь 3 близких в подписку, у каждого будет свой аккаунт.</span></div>
+                </div>
             </div>
         </section>
 
-        <!-- FAQ -->
-        <section class="section">
-            <h2 style="text-align:center;margin-bottom:30px;">FAQ</h2>
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div style="padding:18px;font-weight:600;cursor:pointer;">Спишут ли деньги после 45 дней?</div>
-                <div class="faq-answer" style="padding:0 18px 18px;display:none;color:var(--muted);">Да, если не отключить автопродление в настройках.</div>
+        <section class="section-pad">
+            <h2 class="text-center mb-3">Как забрать 45 дней?</h2>
+            <div class="glass-panel" style="padding: 20px 30px;">
+                <ol class="step-list">
+                    <li class="step-item">Нажми кнопку «Активировать 45 дней бесплатно»</li>
+                    <li class="step-item">Авторизуйся в своём аккаунте Яндекса</li>
+                    <li class="step-item">Убедись, что промокод <b>N3GEL3U5FD</b> применён</li>
+                    <li class="step-item">Привяжи карту для проверки (спишется и вернётся 11 ₽)</li>
+                    <li class="step-item" style="border:none;">Наслаждайся контентом! Отменить можно в любой момент.</li>
+                </ol>
             </div>
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div style="padding:18px;font-weight:600;cursor:pointer;">Можно ли активировать несколько раз?</div>
-                <div class="faq-answer" style="padding:0 18px 18px;display:none;color:var(--muted);">Промокод многоразовый — могут использовать все.</div>
+        </section>
+
+        <section class="section-pad">
+            <h2 class="text-center mb-3">Отзывы пользователей</h2>
+            <div class="grid-cards">
+                <div class="review-card glass-panel">
+                    <img src="https://i.pravatar.cc/60?u=1" class="review-avatar" alt="User">
+                    <div><strong>Алексей М.</strong><br><span class="text-muted">«Всё сработало с первого раза! Реально дали 45 дней бесплатно на старый аккаунт, где давно не было подписки.»</span></div>
+                </div>
+                <div class="review-card glass-panel">
+                    <img src="https://i.pravatar.cc/60?u=2" class="review-avatar" alt="User">
+                    <div><strong>Марина К.</strong><br><span class="text-muted">«Подключила мужа и детей в семейную группу. Экономия отличная, спасибо за код!»</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-pad" style="margin-bottom: 40px;">
+            <h2 class="text-center mb-3">Частые вопросы</h2>
+            <div class="faq-list">
+                <div class="faq-item glass-panel" onclick="toggleFAQ(this)">
+                    <div class="faq-question">Спишут ли деньги сразу? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Нет, первый платеж (449 ₽) будет только через 45 дней. Для проверки карты Яндекс может заморозить 11 рублей, которые сразу же вернутся на счет.</div>
+                </div>
+                <div class="faq-item glass-panel" onclick="toggleFAQ(this)">
+                    <div class="faq-question">Как отключить, чтобы не списали деньги потом? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Зайди в личный кабинет Яндекс ID -> Подписки -> Управление. Там можно нажать «Отменить подписку». Подписка продолжит работать до конца бесплатных 45 дней.</div>
+                </div>
+                <div class="faq-item glass-panel" onclick="toggleFAQ(this)">
+                    <div class="faq-question">Работает ли код для старых аккаунтов? <span class="faq-icon">+</span></div>
+                    <div class="faq-answer">Да, промокод работает как для новых пользователей, так и для тех, у кого сейчас нет активной подписки Плюс.</div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container" style="text-align:center;padding:40px 0;color:var(--muted);">
-            © 2026 PromoHub • Партнёр Яндекс Дистрибуции
+        <div class="container text-center text-muted section-pad" style="border-top: 1px solid var(--border);">
+            <p>Данный сайт носит информационный характер. Яндекс Плюс — зарегистрированная торговая марка ООО «ЯНДЕКС».</p>
+            <p class="mt-2">© 2024 PromoHub • Партнёр Яндекс Дистрибуции</p>
         </div>
     </footer>
 
-    <!-- Sticky Button -->
-    <button class="sticky-btn" onclick="activateAll()">🚀 Активировать 45 дней бесплатно</button>
+    <button class="sticky-btn" onclick="activateAll()">🚀 Забрать 45 дней</button>
 
-    <!-- QR Modal -->
-    <div id="qrModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;">
-        <div style="background:#111;padding:30px;border-radius:24px;text-align:center;max-width:340px;">
-            <h3>Отсканируй и активируй</h3>
-            <div id="qrcode" style="margin:20px auto;"></div>
-            <button onclick="closeQR()" style="padding:12px 32px;background:var(--accent);color:#000;border:none;border-radius:14px;">Закрыть</button>
+    <div id="qrModal" class="modal">
+        <div class="modal-content">
+            <h3 class="mb-2">Наведи камеру</h3>
+            <p class="text-muted mb-2">Отсканируй код, чтобы открыть страницу активации на телефоне</p>
+            <div id="qrcode" style="display:flex; justify-content:center; margin-bottom: 20px;"></div>
+            <button onclick="closeQR()" class="btn btn-outline">Закрыть</button>
         </div>
     </div>
 
     <script>
         const promoCode = "N3GEL3U5FD";
-        const partnerLink = "https://plus.yandex.ru/action/gift/45_perf?utm_source=DI&utm_medium=paid_performance&utm_content=goal-PL&utm_campaign=MSCAMP-1259&promocode=N3GEL3U5FD";
+        const partnerLink = "https://plus.yandex.ru/action/gift/45_perf?utm_source=DI&utm_medium=paid_performance&utm_content=goal-PL&utm_campaign=MSCAMP-1259&promocode=" + promoCode;
 
-        // Live counter
-        let count = 248;
-        setInterval(() => {
-            count += Math.floor(Math.random() * 4) + 1;
-            document.getElementById('live-count').textContent = count;
-        }, 6500);
+        // 1. Умный счётчик активаций (Не палится при обновлении F5)
+        function initCounter() {
+            const countEl = document.getElementById('live-count');
+            const now = new Date();
+            // Базовое число зависит от дня года и текущего часа (всегда растет в течение дня)
+            const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+            let baseCount = (dayOfYear * 3) + now.getHours() * 12 + Math.floor(now.getMinutes() / 5);
+            
+            // Защита от прыжков вниз: проверяем localStorage
+            let savedCount = localStorage.getItem('yandexPromoCount');
+            if (savedCount && parseInt(savedCount) > baseCount) {
+                baseCount = parseInt(savedCount);
+            }
+            
+            countEl.textContent = baseCount;
 
+            // Имитация живых людей (раз в 4-9 сек)
+            setInterval(() => {
+                baseCount += Math.floor(Math.random() * 3) + 1;
+                countEl.textContent = baseCount;
+                localStorage.setItem('yandexPromoCount', baseCount);
+            }, Math.random() * 5000 + 4000);
+        }
+        initCounter();
+
+        // 2. Красивое уведомление (Toast) вместо грубого alert()
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Копирование промокода
         function copyPromo() {
-            navigator.clipboard.writeText(promoCode).then(() => {
-                alert("✅ Промокод скопирован!\n\n" + promoCode);
-            });
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(promoCode).then(() => showToast("✅ Промокод скопирован!"));
+            } else {
+                // Фолбек для старых браузеров
+                const textArea = document.createElement("textarea");
+                textArea.value = promoCode;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                textArea.remove();
+                showToast("✅ Промокод скопирован!");
+            }
         }
 
-        function showQR() {
-            document.getElementById('qrModal').style.display = 'flex';
-            document.getElementById('qrcode').innerHTML = '';
-            new QRCode(document.getElementById('qrcode'), {
-                text: partnerLink,
-                width: 240,
-                height: 240
-            });
-        }
-
-        function closeQR() {
-            document.getElementById('qrModal').style.display = 'none';
-        }
-
+        // Главная кнопка активации
         function activateAll() {
+            copyPromo(); // Автоматически копируем перед переходом (UX фича)
             createConfetti();
-            setTimeout(() => window.open(partnerLink, '_blank'), 400);
+            setTimeout(() => window.location.href = partnerLink, 800); // Редирект в том же окне лучше для конверсии мобилок
         }
 
+        // Конфетти
         function createConfetti() {
-            for (let i = 0; i < 60; i++) {
+            const emojis = ['🎉', '🔥', '🎁', '✨', '💛'];
+            for (let i = 0; i < 40; i++) {
                 const c = document.createElement('div');
-                c.textContent = ['🎉','🔥','💰','✨'][Math.floor(Math.random()*4)];
+                c.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 c.style.position = 'fixed';
                 c.style.left = Math.random() * 100 + 'vw';
                 c.style.top = '-50px';
-                c.style.fontSize = '26px';
+                c.style.fontSize = (Math.random() * 15 + 15) + 'px';
                 c.style.zIndex = '99999';
+                c.style.transition = 'transform 2s ease-in, opacity 2s ease-in';
                 document.body.appendChild(c);
-                setTimeout(() => c.remove(), 5000);
+                
+                requestAnimationFrame(() => {
+                    c.style.transform = `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg) translateX(${Math.random() * 100 - 50}px)`;
+                    c.style.opacity = '0';
+                });
+                setTimeout(() => c.remove(), 2000);
             }
         }
 
+        // FAQ Аккордеон (Плавный)
         function toggleFAQ(el) {
-            const answer = el.querySelector('.faq-answer');
-            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            el.classList.toggle('active');
+            const icon = el.querySelector('.faq-icon');
+            icon.textContent = el.classList.contains('active') ? '−' : '+';
         }
 
-        // Sticky button
-        window.addEventListener('load', () => {
-            if (window.innerWidth < 768) document.querySelector('.sticky-btn').style.display = 'block';
+        // QR Код
+        function showQR() {
+            const modal = document.getElementById('qrModal');
+            modal.classList.add('show');
+            document.getElementById('qrcode').innerHTML = '';
+            new QRCode(document.getElementById('qrcode'), {
+                text: partnerLink, width: 200, height: 200,
+                colorDark : "#000000", colorLight : "#ffffff"
+            });
+        }
+        function closeQR() {
+            document.getElementById('qrModal').classList.remove('show');
+        }
+        // Закрытие по клику вне модалки
+        window.onclick = function(event) {
+            const modal = document.getElementById('qrModal');
+            if (event.target == modal) closeQR();
+        }
+
+        // Появление Sticky Button при скролле (чтобы не перекрывала главный экран)
+        window.addEventListener('scroll', () => {
+            const btn = document.querySelector('.sticky-btn');
+            if (window.scrollY > 400 && window.innerWidth < 768) {
+                btn.style.display = 'block';
+            } else {
+                btn.style.display = 'none';
+            }
         });
 
-        // Share
+        // Поделиться
         document.getElementById('share-btn').addEventListener('click', () => {
             if (navigator.share) {
-                navigator.share({ title: document.title, url: location.href });
+                navigator.share({ title: document.title, text: "Лови 45 дней Яндекс Плюса бесплатно!", url: location.href });
             } else {
                 navigator.clipboard.writeText(location.href);
-                alert('Ссылка скопирована!');
+                showToast('🔗 Ссылка скопирована!');
             }
         });
 
-        // Theme toggle
+        // Смена темы
         document.getElementById('theme-toggle').addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const newTheme = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            document.getElementById('theme-toggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            const html = document.documentElement;
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            document.getElementById('theme-toggle').textContent = isDark ? '🌙' : '☀️';
         });
     </script>
 </body>
